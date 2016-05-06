@@ -9,10 +9,6 @@ html {
 
 body {
   font-family: "Roboto", sans-serif;
-  background-image: url("../images/bg.png");
-  background-position: center center;
-  background-repeat: no-repeat;
-  background-size: cover;
   padding: 20px 0;
 }
 
