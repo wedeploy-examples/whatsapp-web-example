@@ -9,7 +9,9 @@ html {
 
 body {
   font-family: "Roboto", sans-serif;
-  padding: 20px 0;
+  margin: 0;
+  padding: 0;
+  height: 100%;
 }
 
 .page {
@@ -20,23 +22,15 @@ body {
   justify-content: center;
 }
 
-.chat-root {
-  height: 100%;
-}
-
 .marvel-device .screen {
   text-align: left;
 }
 
-.wrapperchat {
-  height: calc(100% - 69px);
-}
-
-.wa-container {
+.screen-container {
   height: 100%;
 }
 
-.wa-container .status-bar {
+.screen-container .status-bar {
   height: 25px;
   background: #054d44;
   color: #fff;
@@ -44,13 +38,13 @@ body {
   padding: 0 8px;
 }
 
-.wa-container .status-bar:after {
+.screen-container .status-bar:after {
   content: "";
   display: table;
   clear: both;
 }
 
-.wa-container .status-bar div {
+.screen-container .status-bar div {
   float: right;
   position: relative;
   top: 50%;
@@ -59,7 +53,15 @@ body {
   margin: 0 0 0 8px;
 }
 
-.wa-container .user-bar {
+.chat {
+  height: calc(100% - 69px);
+}
+
+.chat-container {
+  height: 100%;
+}
+
+.screen-container .user-bar {
   height: 55px;
   background: #075e54;
   color: #fff;
@@ -67,13 +69,13 @@ body {
   font-size: 24px;
 }
 
-.wa-container .user-bar:after {
+.screen-container .user-bar:after {
   content: "";
   display: table;
   clear: both;
 }
 
-.wa-container .user-bar div {
+.screen-container .user-bar div {
   float: left;
   position: relative;
   top: 50%;
@@ -81,35 +83,35 @@ body {
           transform: translateY(-50%);
 }
 
-.wa-container .user-bar div.actions {
+.screen-container .user-bar div.actions {
   float: right;
   margin: 0 0 0 20px;
 }
 
-.wa-container .user-bar div.actions.more {
+.screen-container .user-bar div.actions.more {
   margin: 0 12px 0 20px;
 }
 
-.wa-container .user-bar div.actions.attachment i {
+.screen-container .user-bar div.actions.attachment i {
   display: block;
   -webkit-transform: rotate(-45deg);
           transform: rotate(-45deg);
 }
 
-.wa-container .user-bar .avatar {
+.screen-container .user-bar .avatar {
   margin: 0 0 0 8px;
   width: 36px;
   height: 36px;
 }
 
-.wa-container .user-bar .avatar img {
+.screen-container .user-bar .avatar img {
   border-radius: 50%;
   display: block;
   box-shadow: 0 1px 0 rgba(255, 255, 255, 0.1);
   width: 100%;
 }
 
-.wa-container .user-bar .name {
+.screen-container .user-bar .name {
   font-size: 16px;
   margin: 0 0 0 8px;
   width: 130px;
@@ -118,20 +120,20 @@ body {
   text-overflow: ellipsis;
 }
 
-.wa-container .user-bar .status {
+.screen-container .user-bar .status {
   display: block;
   font-size: 12px;
   font-weight: 300;
 }
 
-.wa-container .bottom-bar {
+.screen-container .bottom-bar {
   height: 47px;
   background: #000;
   color: #fff;
   font-size: 22px;
 }
 
-.wa-container .bottom-bar div {
+.screen-container .bottom-bar div {
   width: 33.333333%;
   float: left;
   text-align: center;
@@ -141,54 +143,54 @@ body {
           transform: translateY(-50%);
 }
 
-.wa-container .bottom-bar div.triangle i {
+.screen-container .bottom-bar div.triangle i {
   display: block;
   -webkit-transform: rotate(-90deg);
           transform: rotate(-90deg);
 }
 
-.wa-container .chat-window {
+.screen-container .chat-window {
   height: calc(100% - 12px);
   position: relative;
-  background: url("../images/wall.jpg");
+  background: #e9e2d8 url("../images/wall.jpg");
   background-size: 100%;
   box-shadow: inset 0 10px 10px -10px #000000;
 }
 
-.wa-container .chat-window ::-webkit-scrollbar {
+.screen-container .chat-window ::-webkit-scrollbar {
   transition: all .5s;
   width: 5px;
   height: 1px;
   z-index: 10;
 }
 
-.wa-container .chat-window ::-webkit-scrollbar-track {
+.screen-container .chat-window ::-webkit-scrollbar-track {
   background: transparent;
 }
 
-.wa-container .chat-window ::-webkit-scrollbar-thumb {
+.screen-container .chat-window ::-webkit-scrollbar-thumb {
   background: #b9b9b9;
 }
 
-.wa-container .chat-window:after {
+.screen-container .chat-window:after {
   content: "";
   display: table;
   clear: both;
 }
 
-.wa-container .chat-window .conversation {
-  overflow: auto;
+.screen-container .chat-window .conversation {
   height: calc(100% - 68px);
+  overflow: auto;
   padding: 0 16px;
 }
 
-.wa-container .chat-window .conversation:after {
+.screen-container .chat-window .conversation:after {
   content: "";
   display: table;
   clear: both;
 }
 
-.wa-container .chat-window .balloon {
+.screen-container .chat-window .balloon {
   padding: 8px;
   position: relative;
   color: #000;
@@ -201,7 +203,7 @@ body {
   word-wrap: break-word;
 }
 
-.wa-container .chat-window .balloon:after {
+.screen-container .chat-window .balloon:after {
   position: absolute;
   content: "";
   width: 0;
@@ -209,7 +211,7 @@ body {
   border-style: solid;
 }
 
-.wa-container .chat-window .balloon .data {
+.screen-container .chat-window .balloon .data {
   display: inline-block;
   padding: 0 20px 0 16px;
   font-size: 11px;
@@ -223,49 +225,49 @@ body {
   background-size: 16px auto;
 }
 
-.wa-container .chat-window .balloon .data.blue {
+.screen-container .chat-window .balloon .data.blue {
   background-image: url("../images/blue.png");
 }
 
-.wa-container .chat-window .balloon img {
+.screen-container .chat-window .balloon img {
   width: 100%;
 }
 
-.wa-container .chat-window .balloon:first-child {
+.screen-container .chat-window .balloon:first-child {
   margin: 16px 0 8px;
 }
 
-.wa-container .chat-window .balloon.him {
+.screen-container .chat-window .balloon.him {
   background: #fff;
   float: left;
   border-radius: 0px 5px 5px 5px;
 }
 
-.wa-container .chat-window .balloon.him .data {
+.screen-container .chat-window .balloon.him .data {
   padding: 0 0 0 16px;
 }
 
-.wa-container .chat-window .balloon.him:after {
+.screen-container .chat-window .balloon.him:after {
   top: 0;
   left: -10px;
   border-width: 0px 10px 10px 0;
   border-color: transparent #fff transparent transparent;
 }
 
-.wa-container .chat-window .balloon.you {
+.screen-container .chat-window .balloon.you {
   background: #e1ffc7;
   float: right;
   border-radius: 5px 0px 5px 5px;
 }
 
-.wa-container .chat-window .balloon.you:after {
+.screen-container .chat-window .balloon.you:after {
   top: 0;
   right: -10px;
   border-width: 0px 0 10px 10px;
   border-color: transparent transparent transparent #e1ffc7;
 }
 
-.wa-container .chat-window .textarea {
+.screen-container .chat-window .textarea {
   width: 100%;
   z-index: 2;
   left: 0;
@@ -276,33 +278,33 @@ body {
   overflow: hidden;
 }
 
-.wa-container .chat-window .textarea:after {
+.screen-container .chat-window .textarea:after {
   content: "";
   display: table;
   clear: both;
 }
 
-.wa-container .chat-window .textarea ::-webkit-input-placeholder {
+.screen-container .chat-window .textarea ::-webkit-input-placeholder {
   color: #b9b9b9;
 }
 
-.wa-container .chat-window .textarea ::-moz-placeholder {
+.screen-container .chat-window .textarea ::-moz-placeholder {
   /* Firefox 19+ */
   color: #b9b9b9;
 }
 
-.wa-container .chat-window .textarea :-ms-input-placeholder {
+.screen-container .chat-window .textarea :-ms-input-placeholder {
   color: #b9b9b9;
 }
 
-.wa-container .chat-window .textarea div,
-.wa-container .chat-window .textarea input {
+.screen-container .chat-window .textarea div,
+.screen-container .chat-window .textarea input {
   height: 100%;
   float: left;
   background: #fff;
 }
 
-.wa-container .chat-window .textarea input {
+.screen-container .chat-window .textarea input {
   width: 59%;
   border: 0;
   outline: none;
@@ -312,27 +314,27 @@ body {
   -webkit-text-fill-color: transparent;
 }
 
-.wa-container .chat-window .textarea input::-webkit-input-placeholder {
+.screen-container .chat-window .textarea input::-webkit-input-placeholder {
   color: none;
   text-shadow: none;
   -webkit-text-fill-color: initial;
 }
 
-.wa-container .chat-window .textarea .emoticons {
+.screen-container .chat-window .textarea .emoticons {
   width: 10%;
   background: url("../images/smile.png") center center no-repeat #fff;
   background-size: 20px;
   border-radius: 5px 0 0 5px;
 }
 
-.wa-container .chat-window .textarea .photo {
+.screen-container .chat-window .textarea .photo {
   width: 10%;
   border-radius: 0 0 5px 0;
   position: relative;
   text-align: center;
 }
 
-.wa-container .chat-window .textarea .photo:after {
+.screen-container .chat-window .textarea .photo:after {
   position: absolute;
   width: 0;
   height: 0;
@@ -344,7 +346,7 @@ body {
   border-color: transparent transparent transparent #fff;
 }
 
-.wa-container .chat-window .textarea .photo i {
+.screen-container .chat-window .textarea .photo i {
   display: block;
   position: relative;
   top: 50%;
@@ -355,13 +357,13 @@ body {
   font-size: 24px;
 }
 
-.wa-container .chat-window .textarea .send-mic {
+.screen-container .chat-window .textarea .send-mic {
   width: 17%;
   background: transparent;
   position: relative;
 }
 
-.wa-container .chat-window .textarea .send-mic .circle-cont {
+.screen-container .chat-window .textarea .send-mic .circle-cont {
   color: #fff;
   border-radius: 50%;
   position: relative;
@@ -375,7 +377,7 @@ body {
   box-shadow: 0 1px 0 #00564d;
 }
 
-.wa-container .chat-window .textarea .send-mic .circle-cont i {
+.screen-container .chat-window .textarea .send-mic .circle-cont i {
   display: inline-block;
   position: relative;
   top: 50%;
@@ -383,4 +385,43 @@ body {
   -webkit-transform: translate(-50%, -50%);
           transform: translate(-50%, -50%);
   font-size: 24px;
+}
+
+@media (max-width: 768px) {
+  .marvel-device.nexus5 {
+    flex: none;
+    padding: 0;
+    max-width: none;
+    overflow-x: hidden;
+    height: 100%;
+    width: 100%;
+    border-radius: 0;
+  }
+
+  .marvel-device > .screen .chat {
+    visibility: visible;
+  }
+
+  .marvel-device {
+    visibility: hidden;
+  }
+
+  .marvel-device .status-bar {
+    display: none;
+  }
+
+  .screen-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+  }
+
+  .screen-container .chat-window {
+    height: calc(100vh - 55px);
+  }
+  .screen-container .chat-window .conversation {
+    height: calc(100vh - 68px);
+  }
 }
