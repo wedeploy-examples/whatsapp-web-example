@@ -118,7 +118,7 @@ body {
   width: 100%;
 }
 
-.wa-container .user-bar .user-name {
+.wa-container .user-bar .name {
   font-size: 16px;
   margin: 0 0 0 8px;
   width: 165px;
@@ -127,9 +127,10 @@ body {
   text-overflow: ellipsis;
 }
 
-.wa-container .user-bar .user-name span {
+.wa-container .user-bar .status {
   display: block;
   font-size: 12px;
+  font-weight: 300;
 }
 
 .wa-container .bottom-bar {
