@@ -5,6 +5,8 @@
 html {
   box-sizing: border-box;
   height: 100%;
+  margin: 0;
+  padding: 0;
 }
 
 body {
@@ -67,6 +69,8 @@ body {
   color: #fff;
   padding: 0 8px;
   font-size: 24px;
+  position: relative;
+  z-index: 1;
 }
 
 .screen-container .user-bar:after {
@@ -154,7 +158,7 @@ body {
   position: relative;
   background: #e9e2d8 url("../images/wall.jpg");
   background-size: 100%;
-  box-shadow: inset 0 10px 10px -10px #000000;
+  z-index: 0;
 }
 
 .screen-container .chat-window ::-webkit-scrollbar {
@@ -169,19 +173,15 @@ body {
 }
 
 .screen-container .chat-window ::-webkit-scrollbar-thumb {
-  background: #b9b9b9;
-}
-
-.screen-container .chat-window:after {
-  content: "";
-  display: table;
-  clear: both;
+  background: #b3ada7;
 }
 
 .screen-container .chat-window .conversation {
   height: calc(100% - 68px);
-  overflow: auto;
+  overflow-x: hidden;
   padding: 0 16px;
+  margin-bottom: 5px;
+  box-shadow: inset 0 10px 10px -10px #000000;
 }
 
 .screen-container .chat-window .conversation:after {
@@ -201,6 +201,7 @@ body {
   margin: 8px 0;
   max-width: 85%;
   word-wrap: break-word;
+  z-index: -1;
 }
 
 .screen-container .chat-window .balloon:after {
@@ -270,9 +271,6 @@ body {
 .screen-container .chat-window .textarea {
   width: 100%;
   z-index: 2;
-  left: 0;
-  position: absolute;
-  bottom: 8px;
   height: 50px;
   padding: 0 0 0 8px;
   overflow: hidden;
@@ -374,7 +372,6 @@ body {
   background: #00897b;
   width: 48px;
   height: 48px;
-  box-shadow: 0 1px 0 #00564d;
 }
 
 .screen-container .chat-window .textarea .send-mic .circle-cont i {
@@ -422,6 +419,6 @@ body {
     height: calc(100vh - 55px);
   }
   .screen-container .chat-window .conversation {
-    height: calc(100vh - 68px);
+    height: calc(100vh - 120px);
   }
 }
