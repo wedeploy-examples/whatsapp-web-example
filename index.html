@@ -3,92 +3,100 @@
 <head>
   <meta charset="UTF-8">
   <title>WeChat</title>
-  <link rel="stylesheet" href="styles/main.css">
   <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Roboto:300,400">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/material-design-iconic-font/2.1.2/css/material-design-iconic-font.min.css">
+  <link rel="stylesheet" href="styles/vendor/devices.min.css">
+  <link rel="stylesheet" href="styles/main.css">
 </head>
 <body>
-  <div class="page nexus6">
-    <div class="phone">
-      <div class="wa-container">
-        <div class="status-bar">
-          <div class="time"></div>
-          <div class="battery">
-            <i class="zmdi zmdi-battery"></i>
-          </div>
-          <div class="network">
-            <i class="zmdi zmdi-network"></i>
-          </div>
-          <div class="wifi">
-            <i class="zmdi zmdi-wifi-alt-2"></i>
-          </div>
-          <div class="star">
-            <i class="zmdi zmdi-star"></i>
-          </div>
-        </div>
-        <div class="wrapperchat">
-          <div class="chat-root">
-            <div class="user-bar">
-              <div class="back">
-                <i class="zmdi zmdi-arrow-left"></i>
-              </div>
-              <div class="user">
-                <img src="https://avatars2.githubusercontent.com/u/398893?s=128" alt="user" />
-              </div>
-              <div class="user-name">
-                <span>Zeno Rocha</span>
-                <span class="status">online now</span>
-              </div>
-              <div class="actions more">
-                <i class="zmdi zmdi-more-vert"></i>
-              </div>
-              <div class="actions attachment">
-                <i class="zmdi zmdi-attachment-alt"></i>
-              </div>
-              <div class="actions">
-                <i class="zmdi zmdi-phone"></i>
-              </div>
+  <div class="page">
+    <div class="marvel-device nexus5">
+      <div class="top-bar"></div>
+      <div class="sleep"></div>
+      <div class="volume"></div>
+      <div class="camera"></div>
+      <div class="screen">
+          <div class="wa-container">
+          <div class="status-bar">
+            <div class="time"></div>
+            <div class="battery">
+              <i class="zmdi zmdi-battery"></i>
             </div>
-            <div class="chat-window">
-              <div class="conversation">
-                <div class="balloon you">
-                   Hello!
-                  <span class="data blue"></span>
+            <div class="network">
+              <i class="zmdi zmdi-network"></i>
+            </div>
+            <div class="wifi">
+              <i class="zmdi zmdi-wifi-alt-2"></i>
+            </div>
+            <div class="star">
+              <i class="zmdi zmdi-star"></i>
+            </div>
+          </div>
+          <div class="wrapperchat">
+            <div class="chat-root">
+              <div class="user-bar">
+                <div class="back">
+                  <i class="zmdi zmdi-arrow-left"></i>
                 </div>
-                <div class="balloon him">
-                  How are you doing?
-                  <span class="data"></span>
+                <div class="avatar">
+                  <img src="https://avatars2.githubusercontent.com/u/398893?s=128" alt="Avatar">
+                </div>
+                <div class="name">
+                  <span>Zeno Rocha</span>
+                  <span class="status">online now</span>
+                </div>
+                <div class="actions more">
+                  <i class="zmdi zmdi-more-vert"></i>
+                </div>
+                <div class="actions attachment">
+                  <i class="zmdi zmdi-attachment-alt"></i>
+                </div>
+                <div class="actions">
+                  <i class="zmdi zmdi-phone"></i>
                 </div>
               </div>
-              <form class="textarea">
-                <div class="emoticons"></div>
-                <input class="message" name="message" placeholder="Type a message" autocomplete="off" autofocus></input>
-                <div class="photo">
-                  <i class="zmdi zmdi-camera"></i>
-                </div>
-                <div class="send-mic">
-                  <div class="circle-cont">
-                    <i class="zmdi zmdi-mic"></i>
+              <div class="chat-window">
+                <div class="conversation">
+                  <div class="balloon you">
+                     Hello!
+                    <span class="data blue"></span>
+                  </div>
+                  <div class="balloon him">
+                    How are you doing?
+                    <span class="data"></span>
                   </div>
                 </div>
-              </form>
+                <form class="textarea">
+                  <div class="emoticons"></div>
+                  <input class="message" name="message" placeholder="Type a message" autocomplete="off" autofocus></input>
+                  <div class="photo">
+                    <i class="zmdi zmdi-camera"></i>
+                  </div>
+                  <div class="send-mic">
+                    <div class="circle-cont">
+                      <i class="zmdi zmdi-mic"></i>
+                    </div>
+                  </div>
+                </form>
+              </div>
             </div>
           </div>
-        </div>
-        <div class="bottom-bar">
-          <div class="triangle">
-            <i class="zmdi zmdi-triangle-up"></i>
-          </div>
-          <div>
-            <i class="zmdi zmdi-circle-o"></i>
-          </div>
-          <div>
-            <i class="zmdi zmdi-square-o"></i>
+          <div class="bottom-bar">
+            <div class="triangle">
+              <i class="zmdi zmdi-triangle-up"></i>
+            </div>
+            <div>
+              <i class="zmdi zmdi-circle-o"></i>
+            </div>
+            <div>
+              <i class="zmdi zmdi-square-o"></i>
+            </div>
           </div>
         </div>
       </div>
     </div>
   </div>
+
   <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.13.0/moment.min.js"></script>
   <script src="scripts/main.js"></script>
 </body>
