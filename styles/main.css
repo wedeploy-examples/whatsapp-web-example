@@ -353,7 +353,6 @@ body {
   width: 17%;
   background: transparent;
   position: relative;
-  cursor: pointer;
 }
 
 .wa-container .chat-window .textarea .send-mic .circle-cont {
