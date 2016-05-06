@@ -193,6 +193,7 @@ body {
   clear: both;
   margin: 8px 0;
   max-width: 85%;
+  word-wrap: break-word;
 }
 
 .wa-container .chat-window .balloon:after {
