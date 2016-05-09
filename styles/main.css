@@ -278,71 +278,54 @@ body {
   border-color: transparent transparent transparent #e1ffc7;
 }
 
-.screen-container .chat-window .textarea {
+/* Compose
+   ========================================================================== */
+
+.block-compose {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-end;
+  overflow: hidden;
+  height: 50px;
   width: 100%;
   z-index: 2;
-  height: 50px;
-  padding: 0 0 0 8px;
-  overflow: hidden;
 }
 
-.screen-container .chat-window .textarea:after {
-  content: "";
-  display: table;
-  clear: both;
-}
-
-.screen-container .chat-window .textarea ::-webkit-input-placeholder {
-  color: #b9b9b9;
-}
-
-.screen-container .chat-window .textarea ::-moz-placeholder {
-  /* Firefox 19+ */
-  color: #b9b9b9;
-}
-
-.screen-container .chat-window .textarea :-ms-input-placeholder {
-  color: #b9b9b9;
-}
-
-.screen-container .chat-window .textarea div,
-.screen-container .chat-window .textarea input {
+.block-compose div,
+.block-compose input {
   height: 100%;
-  float: left;
   background: #fff;
 }
 
-.screen-container .chat-window .textarea input {
-  width: 59%;
+.block-compose .icon-emoji {
+  width: 48px;
+  border-radius: 5px 0 0 5px;
+  background: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex: 0 0 auto;
+  margin-left: 8px;
+}
+
+.block-compose .input-msg {
+  flex: 1 1 auto;
   border: 0;
   outline: none;
   font-size: 16px;
-  color: #00897b;
-  text-shadow: 0px 0px 0px #000;
-  -webkit-text-fill-color: transparent;
+  margin: 0;
+  min-width: 50px;
 }
 
-.screen-container .chat-window .textarea input::-webkit-input-placeholder {
-  color: none;
-  text-shadow: none;
-  -webkit-text-fill-color: initial;
-}
-
-.screen-container .chat-window .textarea .emoticons {
-  width: 10%;
-  background: url("../images/smile.png") center center no-repeat #fff;
-  background-size: 20px;
-  border-radius: 5px 0 0 5px;
-}
-
-.screen-container .chat-window .textarea .photo {
-  width: 10%;
+.block-compose .icon-photo {
+  flex: 0 0 auto;
+  width: 48px;
   border-radius: 0 0 5px 0;
   position: relative;
   text-align: center;
 }
 
-.screen-container .chat-window .textarea .photo:after {
+.block-compose .icon-photo:after {
   position: absolute;
   width: 0;
   height: 0;
@@ -354,43 +337,42 @@ body {
   border-color: transparent transparent transparent #fff;
 }
 
-.screen-container .chat-window .textarea .photo i {
+.block-compose .icon-photo i {
   display: block;
   position: relative;
   top: 50%;
   left: 50%;
-  -webkit-transform: translate(-50%, -50%);
-          transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
   color: #7d8488;
   font-size: 24px;
 }
 
-.screen-container .chat-window .textarea .send-mic {
-  width: 17%;
+.block-compose .icon-mic {
+  flex: 0 0 auto;
+  margin-left: 8px;
+  margin-right: 8px;
   background: transparent;
   position: relative;
 }
 
-.screen-container .chat-window .textarea .send-mic .circle-cont {
-  color: #fff;
+.block-compose .icon-mic .circle {
+  background: #008a7c;
   border-radius: 50%;
+  color: #fff;
   position: relative;
   top: 50%;
   left: 50%;
-  -webkit-transform: translate(-50%, -50%);
-          transform: translate(-50%, -50%);
-  background: #005e54;
+  transform: translate(-50%, -50%);
   width: 48px;
   height: 48px;
 }
 
-.screen-container .chat-window .textarea .send-mic .circle-cont i {
+.block-compose .icon-mic .circle i {
   display: inline-block;
   position: relative;
   top: 50%;
   left: 50%;
-  -webkit-transform: translate(-50%, -50%);
-          transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
   font-size: 24px;
 }
 

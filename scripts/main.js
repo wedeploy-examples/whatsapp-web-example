@@ -17,7 +17,7 @@ for (var i = 0; i < messageTime.length; i++) {
 /* Message
    ========================================================================== */
 
-var form = document.querySelector('form');
+var form = document.querySelector('.block-compose');
 var conversation = document.querySelector('.conversation');
 
 form.addEventListener('submit', function(e) {
