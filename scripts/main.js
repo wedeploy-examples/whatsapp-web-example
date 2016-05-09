@@ -8,7 +8,7 @@ deviceTime.innerHTML = moment().format('h:mm');
 
 setInterval(function() {
 	deviceTime.innerHTML = moment().format('h:mm');
-}, 1000 * 60);
+}, 1000);
 
 for (var i = 0; i < messageTime.length; i++) {
 	messageTime[i].innerHTML = moment().format('h:mm A');
