@@ -2,7 +2,7 @@
    ========================================================================== */
 
 var deviceTime = document.querySelector('.status-bar .time');
-var messageTime = document.querySelectorAll('.balloon .data');
+var messageTime = document.querySelectorAll('.message .metadata');
 
 deviceTime.innerHTML = moment().format('h:mm');
 
@@ -18,14 +18,14 @@ for (var i = 0; i < messageTime.length; i++) {
    ========================================================================== */
 
 var form = document.querySelector('.block-compose');
-var conversation = document.querySelector('.conversation');
+var conversation = document.querySelector('.conversation-container');
 
 form.addEventListener('submit', function(e) {
 	var message = e.target.message;
 
 	if (message.value) {
-		conversation.innerHTML += '<div class="balloon you">' + message.value +
-			'<span class="data blue">' + moment().format('h:mm A') + '</span></div>';
+		conversation.innerHTML += '<div class="message sent">' + message.value +
+			'<span class="metadata blue">' + moment().format('h:mm A') + '</span></div>';
 	}
 
 	message.value = '';

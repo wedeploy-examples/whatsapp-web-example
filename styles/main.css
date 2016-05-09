@@ -34,7 +34,10 @@ body {
   height: 100%;
 }
 
-.screen-container .status-bar {
+/* Status Bar
+   ========================================================================== */
+
+.status-bar {
   height: 25px;
   background: #004e45;
   color: #fff;
@@ -42,21 +45,23 @@ body {
   padding: 0 8px;
 }
 
-.screen-container .status-bar:after {
+.status-bar:after {
   content: "";
   display: table;
   clear: both;
 }
 
-.screen-container .status-bar div {
+.status-bar div {
   float: right;
   position: relative;
   top: 50%;
-  -webkit-transform: translateY(-50%);
-          transform: translateY(-50%);
+  transform: translateY(-50%);
   margin: 0 0 0 8px;
   font-weight: 600;
 }
+
+/* Chat
+   ========================================================================== */
 
 .chat {
   height: calc(100% - 69px);
@@ -66,7 +71,10 @@ body {
   height: 100%;
 }
 
-.screen-container .user-bar {
+/* User Bar
+   ========================================================================== */
+
+.user-bar {
   height: 55px;
   background: #005e54;
   color: #fff;
@@ -76,94 +84,72 @@ body {
   z-index: 1;
 }
 
-.screen-container .user-bar:after {
+.user-bar:after {
   content: "";
   display: table;
   clear: both;
 }
 
-.screen-container .user-bar div {
+.user-bar div {
   float: left;
+  transform: translateY(-50%);
   position: relative;
   top: 50%;
-  -webkit-transform: translateY(-50%);
-          transform: translateY(-50%);
 }
 
-.screen-container .user-bar .actions {
+.user-bar .actions {
   float: right;
   margin: 0 0 0 20px;
 }
 
-.screen-container .user-bar .actions.more {
+.user-bar .actions.more {
   margin: 0 12px 0 32px;
 }
 
-.screen-container .user-bar .actions.attachment {
+.user-bar .actions.attachment {
   margin: 0 0 0 30px;
 }
 
-.screen-container .user-bar .actions.attachment i {
+.user-bar .actions.attachment i {
   display: block;
-  -webkit-transform: rotate(-45deg);
-          transform: rotate(-45deg);
+  transform: rotate(-45deg);
 }
 
-.screen-container .user-bar .avatar {
+.user-bar .avatar {
   margin: 0 0 0 5px;
   width: 36px;
   height: 36px;
 }
 
-.screen-container .user-bar .avatar img {
+.user-bar .avatar img {
   border-radius: 50%;
-  display: block;
   box-shadow: 0 1px 0 rgba(255, 255, 255, 0.1);
+  display: block;
   width: 100%;
 }
 
-.screen-container .user-bar .name {
+.user-bar .name {
   font-size: 17px;
-  margin: 0 0 0 8px;
-  width: 110px;
-  white-space: nowrap;
-  overflow: hidden;
+  font-weight: 600;
   text-overflow: ellipsis;
   letter-spacing: 0.3px;
-  font-weight: 600;
+  margin: 0 0 0 8px;
+  overflow: hidden;
+  white-space: nowrap;
+  width: 110px;
 }
 
-.screen-container .user-bar .status {
+.user-bar .status {
   display: block;
   font-size: 13px;
   font-weight: 400;
   letter-spacing: 0;
 }
 
-.screen-container .bottom-bar {
-  height: 47px;
-  background: #000;
-  color: #fff;
-  font-size: 22px;
-}
+/* Conversation
+   ========================================================================== */
 
-.screen-container .bottom-bar div {
-  width: 33.333333%;
-  float: left;
-  text-align: center;
-  position: relative;
-  top: 50%;
-  -webkit-transform: translateY(-50%);
-          transform: translateY(-50%);
-}
-
-.screen-container .bottom-bar .triangle i {
-  display: block;
-  -webkit-transform: rotate(-90deg);
-          transform: rotate(-90deg);
-}
-
-.screen-container .chat-window {
+.conversation {
   height: calc(100% - 12px);
   position: relative;
   background: #e9e2d8 url("../images/wall.jpg");
@@ -171,50 +157,53 @@ body {
   z-index: 0;
 }
 
-.screen-container .chat-window ::-webkit-scrollbar {
+.conversation ::-webkit-scrollbar {
   transition: all .5s;
   width: 5px;
   height: 1px;
   z-index: 10;
 }
 
-.screen-container .chat-window ::-webkit-scrollbar-track {
+.conversation ::-webkit-scrollbar-track {
   background: transparent;
 }
 
-.screen-container .chat-window ::-webkit-scrollbar-thumb {
+.conversation ::-webkit-scrollbar-thumb {
   background: #b3ada7;
 }
 
-.screen-container .chat-window .conversation {
+.conversation .conversation-container {
   height: calc(100% - 68px);
+  box-shadow: inset 0 10px 10px -10px #000000;
   overflow-x: hidden;
   padding: 0 16px;
   margin-bottom: 5px;
-  box-shadow: inset 0 10px 10px -10px #000000;
 }
 
-.screen-container .chat-window .conversation:after {
+.conversation .conversation-container:after {
   content: "";
   display: table;
   clear: both;
 }
 
-.screen-container .chat-window .balloon {
+/* Messages
+   ========================================================================== */
+
+.message {
+  box-shadow: 0 0 1px rgba(0, 0, 0, 0.2);
+  color: #000;
+  clear: both;
+  line-height: 18px;
+  font-size: 15px;
   padding: 8px;
   position: relative;
-  color: #000;
-  font-size: 14px;
-  line-height: 18px;
-  box-shadow: 0 0 1px rgba(0, 0, 0, 0.2);
-  clear: both;
   margin: 8px 0;
   max-width: 85%;
   word-wrap: break-word;
   z-index: -1;
 }
 
-.screen-container .chat-window .balloon:after {
+.message:after {
   position: absolute;
   content: "";
   width: 0;
@@ -222,60 +211,56 @@ body {
   border-style: solid;
 }
 
-.screen-container .chat-window .balloon .data {
-  display: inline-block;
-  padding: 0 20px 0 16px;
-  font-size: 11px;
-  color: #b9b9b9;
-  position: relative;
-  bottom: -5px;
-  float: right;
+.message .metadata {
   background-repeat: no-repeat;
   background-position: right 3px;
   background-color: transparent;
   background-size: 16px auto;
+  color: rgba(0,0,0,.45);
+  display: inline-block;
+  float: right;
+  font-size: 11px;
+  padding: 0 20px 0 7px;
+  position: relative;
+  bottom: -7px;
 }
 
-.screen-container .chat-window .balloon .data.blue {
+.message .metadata.blue {
   background-image: url("../images/blue.png");
 }
 
-.screen-container .chat-window .balloon img {
-  width: 100%;
-}
-
-.screen-container .chat-window .balloon:first-child {
+.message:first-child {
   margin: 16px 0 8px;
 }
 
-.screen-container .chat-window .balloon.him {
+.message.received {
   background: #fff;
-  float: left;
   border-radius: 0px 5px 5px 5px;
+  float: left;
 }
 
-.screen-container .chat-window .balloon.him .data {
+.message.received .metadata {
   padding: 0 0 0 16px;
 }
 
-.screen-container .chat-window .balloon.him:after {
-  top: 0;
-  left: -10px;
+.message.received:after {
   border-width: 0px 10px 10px 0;
   border-color: transparent #fff transparent transparent;
-}
-
-.screen-container .chat-window .balloon.you {
-  background: #e1ffc7;
-  float: right;
-  border-radius: 5px 0px 5px 5px;
-}
-
-.screen-container .chat-window .balloon.you:after {
   top: 0;
-  right: -10px;
+  left: -10px;
+}
+
+.message.sent {
+  background: #e1ffc7;
+  border-radius: 5px 0px 5px 5px;
+  float: right;
+}
+
+.message.sent:after {
   border-width: 0px 0 10px 10px;
   border-color: transparent transparent transparent #e1ffc7;
+  top: 0;
+  right: -10px;
 }
 
 /* Compose
@@ -293,69 +278,69 @@ body {
 
 .block-compose div,
 .block-compose input {
-  height: 100%;
   background: #fff;
+  height: 100%;
 }
 
-.block-compose .icon-emoji {
-  width: 48px;
-  border-radius: 5px 0 0 5px;
-  background: white;
+.block-compose .emoji {
   display: flex;
   align-items: center;
   justify-content: center;
+  background: white;
+  border-radius: 5px 0 0 5px;
   flex: 0 0 auto;
   margin-left: 8px;
+  width: 48px;
 }
 
 .block-compose .input-msg {
-  flex: 1 1 auto;
   border: 0;
-  outline: none;
+  flex: 1 1 auto;
   font-size: 16px;
   margin: 0;
+  outline: none;
   min-width: 50px;
 }
 
-.block-compose .icon-photo {
+.block-compose .photo {
   flex: 0 0 auto;
-  width: 48px;
   border-radius: 0 0 5px 0;
-  position: relative;
   text-align: center;
+  position: relative;
+  width: 48px;
 }
 
-.block-compose .icon-photo:after {
+.block-compose .photo:after {
+  border-width: 0px 0 10px 10px;
+  border-color: transparent transparent transparent #fff;
+  border-style: solid;
   position: absolute;
   width: 0;
   height: 0;
-  border-style: solid;
   content: "";
   top: 0;
   right: -10px;
-  border-width: 0px 0 10px 10px;
-  border-color: transparent transparent transparent #fff;
 }
 
-.block-compose .icon-photo i {
+.block-compose .photo i {
   display: block;
+  color: #7d8488;
+  font-size: 24px;
+  transform: translate(-50%, -50%);
   position: relative;
   top: 50%;
   left: 50%;
-  transform: translate(-50%, -50%);
-  color: #7d8488;
-  font-size: 24px;
 }
 
-.block-compose .icon-mic {
+.block-compose .mic {
+  background: transparent;
   flex: 0 0 auto;
   margin-left: 8px;
   margin-right: 8px;
-  background: transparent;
   position: relative;
 }
 
-.block-compose .icon-mic .circle {
+.block-compose .mic .circle {
   background: #008a7c;
   border-radius: 50%;
   color: #fff;
@@ -367,7 +352,7 @@ body {
   height: 48px;
 }
 
-.block-compose .icon-mic .circle i {
+.block-compose .mic .circle i {
   display: inline-block;
   position: relative;
   top: 50%;
@@ -376,15 +361,18 @@ body {
   font-size: 24px;
 }
 
+/* Small Screens
+   ========================================================================== */
+
 @media (max-width: 768px) {
   .marvel-device.nexus5 {
+    border-radius: 0;
     flex: none;
     padding: 0;
     max-width: none;
-    overflow-x: hidden;
+    overflow: hidden;
     height: 100%;
     width: 100%;
-    border-radius: 0;
   }
 
   .marvel-device > .screen .chat {
@@ -407,10 +395,10 @@ body {
     bottom: 0;
   }
 
-  .screen-container .chat-window {
+  .conversation {
     height: calc(100vh - 55px);
   }
-  .screen-container .chat-window .conversation {
+  .conversation .conversation-container {
     height: calc(100vh - 120px);
   }
 }
