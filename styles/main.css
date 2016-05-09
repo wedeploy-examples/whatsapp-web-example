@@ -34,8 +34,7 @@ body {
   height: 100%;
 }
 
-/* Status Bar
-   ========================================================================== */
+/* Status Bar */
 
 .status-bar {
   height: 25px;
@@ -60,8 +59,7 @@ body {
   font-weight: 600;
 }
 
-/* Chat
-   ========================================================================== */
+/* Chat */
 
 .chat {
   height: calc(100% - 69px);
@@ -71,8 +69,7 @@ body {
   height: 100%;
 }
 
-/* User Bar
-   ========================================================================== */
+/* User Bar */
 
 .user-bar {
   height: 55px;
@@ -146,8 +143,7 @@ body {
   letter-spacing: 0;
 }
 
-/* Conversation
-   ========================================================================== */
+/* Conversation */
 
 .conversation {
   height: calc(100% - 12px);
@@ -186,8 +182,7 @@ body {
   clear: both;
 }
 
-/* Messages
-   ========================================================================== */
+/* Messages */
 
 .message {
   box-shadow: 0 0 1px rgba(0, 0, 0, 0.2);
@@ -212,21 +207,23 @@ body {
 }
 
 .message .metadata {
-  background-repeat: no-repeat;
-  background-position: right 3px;
-  background-color: transparent;
-  background-size: 16px auto;
-  color: rgba(0,0,0,.45);
   display: inline-block;
   float: right;
-  font-size: 11px;
-  padding: 0 20px 0 7px;
+  padding: 0 0 0 7px;
   position: relative;
-  bottom: -7px;
+  bottom: -4px;
 }
 
-.message .metadata.blue {
-  background-image: url("../images/blue.png");
+.message .metadata .time {
+  color: rgba(0, 0, 0, .45);
+  font-size: 11px;
+  display: inline-block;
+}
+
+.message .metadata .tick {
+  margin-left: 2px;
+  position: relative;
+  top: 2px;
 }
 
 .message:first-child {
@@ -263,8 +260,7 @@ body {
   right: -10px;
 }
 
-/* Compose
-   ========================================================================== */
+/* Compose */
 
 .block-compose {
   display: flex;
@@ -361,8 +357,7 @@ body {
   font-size: 24px;
 }
 
-/* Small Screens
-   ========================================================================== */
+/* Small Screens */
 
 @media (max-width: 768px) {
   .marvel-device.nexus5 {
