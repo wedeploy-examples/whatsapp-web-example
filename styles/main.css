@@ -10,6 +10,8 @@ html {
 }
 
 body {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
   font-family: "Roboto", sans-serif;
   margin: 0;
   padding: 0;
@@ -34,7 +36,7 @@ body {
 
 .screen-container .status-bar {
   height: 25px;
-  background: #054d44;
+  background: #004e45;
   color: #fff;
   font-size: 14px;
   padding: 0 8px;
@@ -53,6 +55,7 @@ body {
   -webkit-transform: translateY(-50%);
           transform: translateY(-50%);
   margin: 0 0 0 8px;
+  font-weight: 600;
 }
 
 .chat {
@@ -65,7 +68,7 @@ body {
 
 .screen-container .user-bar {
   height: 55px;
-  background: #075e54;
+  background: #005e54;
   color: #fff;
   padding: 0 8px;
   font-size: 24px;
@@ -87,23 +90,27 @@ body {
           transform: translateY(-50%);
 }
 
-.screen-container .user-bar div.actions {
+.screen-container .user-bar .actions {
   float: right;
   margin: 0 0 0 20px;
 }
 
-.screen-container .user-bar div.actions.more {
-  margin: 0 12px 0 20px;
+.screen-container .user-bar .actions.more {
+  margin: 0 12px 0 32px;
 }
 
-.screen-container .user-bar div.actions.attachment i {
+.screen-container .user-bar .actions.attachment {
+  margin: 0 0 0 30px;
+}
+
+.screen-container .user-bar .actions.attachment i {
   display: block;
   -webkit-transform: rotate(-45deg);
           transform: rotate(-45deg);
 }
 
 .screen-container .user-bar .avatar {
-  margin: 0 0 0 8px;
+  margin: 0 0 0 5px;
   width: 36px;
   height: 36px;
 }
@@ -116,18 +123,21 @@ body {
 }
 
 .screen-container .user-bar .name {
-  font-size: 16px;
+  font-size: 17px;
   margin: 0 0 0 8px;
-  width: 130px;
+  width: 110px;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
+  letter-spacing: 0.3px;
+  font-weight: 600;
 }
 
 .screen-container .user-bar .status {
   display: block;
-  font-size: 12px;
-  font-weight: 300;
+  font-size: 13px;
+  font-weight: 400;
+  letter-spacing: 0;
 }
 
 .screen-container .bottom-bar {
@@ -147,7 +157,7 @@ body {
           transform: translateY(-50%);
 }
 
-.screen-container .bottom-bar div.triangle i {
+.screen-container .bottom-bar .triangle i {
   display: block;
   -webkit-transform: rotate(-90deg);
           transform: rotate(-90deg);
@@ -369,7 +379,7 @@ body {
   left: 50%;
   -webkit-transform: translate(-50%, -50%);
           transform: translate(-50%, -50%);
-  background: #00897b;
+  background: #005e54;
   width: 48px;
   height: 48px;
 }
