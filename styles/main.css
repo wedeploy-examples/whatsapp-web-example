@@ -148,8 +148,7 @@ body {
 .conversation {
   height: calc(100% - 12px);
   position: relative;
-  background: #e9e2d8 url("../images/wall.jpg");
-  background-size: 100%;
+  background: #efe7dd url("../images/bg.jpg") repeat;
   z-index: 0;
 }
 
@@ -185,7 +184,6 @@ body {
 /* Messages */
 
 .message {
-  box-shadow: 0 0 1px rgba(0, 0, 0, 0.2);
   color: #000;
   clear: both;
   line-height: 18px;
