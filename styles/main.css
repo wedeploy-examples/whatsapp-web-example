@@ -206,7 +206,7 @@ body {
   border-style: solid;
 }
 
-.message .metadata {
+.metadata {
   display: inline-block;
   float: right;
   padding: 0 0 0 7px;
@@ -214,16 +214,48 @@ body {
   bottom: -4px;
 }
 
-.message .metadata .time {
+.metadata .time {
   color: rgba(0, 0, 0, .45);
   font-size: 11px;
   display: inline-block;
 }
 
-.message .metadata .tick {
+.metadata .tick {
+  display: inline-block;
   margin-left: 2px;
   position: relative;
-  top: 2px;
+  top: 4px;
+  height: 16px;
+  width: 16px;
+}
+
+.metadata .tick svg {
+  position: absolute;
+  transition: .5s ease-in-out;
+}
+
+.metadata .tick svg:first-child {
+  -webkit-backface-visibility: hidden;
+          backface-visibility: hidden;
+  -webkit-transform: perspective(800px) rotateY(180deg);
+          transform: perspective(800px) rotateY(180deg);
+}
+
+.metadata .tick svg:last-child {
+  -webkit-backface-visibility: hidden;
+          backface-visibility: hidden;
+  -webkit-transform: perspective(800px) rotateY(0deg);
+          transform: perspective(800px) rotateY(0deg);
+}
+
+.metadata .tick-animation svg:first-child {
+  -webkit-transform: perspective(800px) rotateY(0);
+          transform: perspective(800px) rotateY(0);
+}
+
+.metadata .tick-animation svg:last-child {
+  -webkit-transform: perspective(800px) rotateY(-179.9deg);
+          transform: perspective(800px) rotateY(-179.9deg);
 }
 
 .message:first-child {
@@ -262,7 +294,7 @@ body {
 
 /* Compose */
 
-.block-compose {
+.conversation-compose {
   display: flex;
   flex-direction: row;
   align-items: flex-end;
@@ -272,13 +304,13 @@ body {
   z-index: 2;
 }
 
-.block-compose div,
-.block-compose input {
+.conversation-compose div,
+.conversation-compose input {
   background: #fff;
   height: 100%;
 }
 
-.block-compose .emoji {
+.conversation-compose .emoji {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -289,7 +321,7 @@ body {
   width: 48px;
 }
 
-.block-compose .input-msg {
+.conversation-compose .input-msg {
   border: 0;
   flex: 1 1 auto;
   font-size: 16px;
@@ -298,7 +330,7 @@ body {
   min-width: 50px;
 }
 
-.block-compose .photo {
+.conversation-compose .photo {
   flex: 0 0 auto;
   border-radius: 0 0 5px 0;
   text-align: center;
@@ -306,7 +338,7 @@ body {
   width: 48px;
 }
 
-.block-compose .photo:after {
+.conversation-compose .photo:after {
   border-width: 0px 0 10px 10px;
   border-color: transparent transparent transparent #fff;
   border-style: solid;
@@ -318,7 +350,7 @@ body {
   right: -10px;
 }
 
-.block-compose .photo i {
+.conversation-compose .photo i {
   display: block;
   color: #7d8488;
   font-size: 24px;
@@ -328,7 +360,7 @@ body {
   left: 50%;
 }
 
-.block-compose .mic {
+.conversation-compose .mic {
   background: transparent;
   flex: 0 0 auto;
   margin-left: 8px;
@@ -336,7 +368,7 @@ body {
   position: relative;
 }
 
-.block-compose .mic .circle {
+.conversation-compose .mic .circle {
   background: #008a7c;
   border-radius: 50%;
   color: #fff;
@@ -348,7 +380,7 @@ body {
   height: 48px;
 }
 
-.block-compose .mic .circle i {
+.conversation-compose .mic .circle i {
   display: inline-block;
   position: relative;
   top: 50%;
