@@ -358,33 +358,33 @@ body {
   left: 50%;
 }
 
-.conversation-compose .mic {
+.conversation-compose .send {
   background: transparent;
+  border: 0;
+  cursor: pointer;
   flex: 0 0 auto;
   margin-left: 8px;
   margin-right: 8px;
+  padding: 0;
   position: relative;
+  outline: none;
 }
 
-.conversation-compose .mic .circle {
+.conversation-compose .send .circle {
   background: #008a7c;
   border-radius: 50%;
   color: #fff;
   position: relative;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
   width: 48px;
   height: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
-.conversation-compose .mic .circle i {
-  display: inline-block;
-  position: relative;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
+.conversation-compose .send .circle i {
   font-size: 24px;
+  margin-left: 5px;
 }
 
 /* Small Screens */
