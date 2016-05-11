@@ -1,6 +1,7 @@
 /* User */
 
 var myUser = {};
+const MESSAGES_ENDPOINT = 'http://data.wechat.liferay.local/messages';
 
 if (localStorage.myUser) {
 	myUser = JSON.parse(localStorage.myUser);
@@ -19,7 +20,7 @@ else {
 
 var conversation = document.querySelector('.conversation-container');
 
-Launchpad.url('http://liferay.io/wechat/messages')
+Launchpad.url(MESSAGES_ENDPOINT)
 	.limit(100)
 	.sort('id', 'asc')
 	.get()
@@ -33,6 +34,15 @@ Launchpad.url('http://liferay.io/wechat/messages')
 
 		conversation.scrollTop = conversation.scrollHeight;
 	});
+
+Launchpad.url(MESSAGES_ENDPOINT)
+	.limit(100)
+	.sort('id', 'asc')
+  .watch()
+  .on('changes', (state) => {
+    console.log(state);
+  });
+
 
 /* New Message */
 
@@ -57,7 +67,7 @@ function newMessage(e) {
 		var message = buildMessage(data);
 		conversation.appendChild(message);
 
-		Launchpad.url('http://liferay.io/wechat/messages')
+		Launchpad.url(MESSAGES_ENDPOINT)
 			.post(data)
 			.then(function() {
 				animateMessage(message);
