@@ -188,7 +188,7 @@ body {
   clear: both;
   line-height: 18px;
   font-size: 15px;
-  padding: 8px;
+  padding: 2px 8px;
   position: relative;
   margin: 8px 0;
   max-width: 85%;
@@ -216,6 +216,10 @@ body {
 
 .message.received .metadata {
   padding: 0 0 0 16px;
+}
+
+.message.received .tick {
+  display: none;
 }
 
 .message.received:after {

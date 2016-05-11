@@ -25,7 +25,12 @@ function newMessage(e) {
 
 		var message = buildMessage(data);
 		conversation.appendChild(message);
-		animateMessage(message);
+
+		Launchpad.url('http://liferay.io/wechat/messages')
+			.post(data)
+			.then(function() {
+				animateMessage(message);
+			});
 	}
 
 	input.value = '';
