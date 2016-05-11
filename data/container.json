@@ -1,0 +1,6 @@
+{
+	"id": "data",
+	"env": {
+		"LAUNCHPAD_API_PATH": "/"
+	}
+}

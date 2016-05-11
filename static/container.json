@@ -1,0 +1,6 @@
+{
+	"id": "static",
+	"env": {
+		"LAUNCHPAD_WEB_PATH": "/"
+	}
+}
