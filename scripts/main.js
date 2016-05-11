@@ -1,12 +1,42 @@
 /* User */
 
-var myName = faker.name.firstName();
-var myColor = 'color-' + Math.floor(Math.random() * 19);
+var myUser = {};
 
-/* Message */
+if (localStorage.myUser) {
+	myUser = JSON.parse(localStorage.myUser);
+}
+else {
+	myUser = {
+		"id": faker.random.uuid(),
+		"name": faker.name.firstName(),
+		"color": 'color-' + Math.floor(Math.random() * 19)
+	};
+
+	localStorage.setItem('myUser', JSON.stringify(myUser));
+}
+
+/* First Load */
+
+var conversation = document.querySelector('.conversation-container');
+
+Launchpad.url('http://liferay.io/wechat/messages')
+	.limit(100)
+	.sort('id', 'asc')
+	.get()
+	.then(function(result) {
+		var messages = result.body();
+
+		for (var i = 0; i < messages.length; i++) {
+			var message = buildMessage(messages[i]);
+			conversation.appendChild(message);
+		}
+
+		conversation.scrollTop = conversation.scrollHeight;
+	});
+
+/* New Message */
 
 var form = document.querySelector('.conversation-compose');
-var conversation = document.querySelector('.conversation-container');
 
 form.addEventListener('submit', newMessage);
 
@@ -16,8 +46,9 @@ function newMessage(e) {
 	if (input.value) {
 		var data = {
 			author: {
-				name: myName,
-				color: myColor
+				id: myUser.id,
+				name: myUser.name,
+				color: myUser.color
 			},
 			content: input.value,
 			time: moment().format('h:mm A')
@@ -40,11 +71,13 @@ function newMessage(e) {
 }
 
 function buildMessage(data) {
+	var color = (data.author.id !== myUser.id) ? data.author.color : '';
+	var sender = (data.author.id !== myUser.id) ? 'received' : 'sent';
+
 	var element = document.createElement('div');
 
-	element.classList.add('message', 'sent');
-
-	element.innerHTML = '<span class="user">' + data.author.name + '</span>' +
+	element.classList.add('message', sender);
+	element.innerHTML = '<span class="user ' + color + '">' + data.author.name + '</span>' +
 		'<span class="text">' + data.content + '</span>' +
 		'<span class="metadata">' +
 			'<span class="time">' + data.time + '</span>' +
@@ -58,10 +91,8 @@ function buildMessage(data) {
 }
 
 function animateMessage(message) {
-	setTimeout(function() {
-		var tick = message.querySelector('.tick');
-		tick.classList.remove('tick-animation');
-	}, 500);
+	var tick = message.querySelector('.tick');
+	tick.classList.remove('tick-animation');
 }
 
 /* Time */
