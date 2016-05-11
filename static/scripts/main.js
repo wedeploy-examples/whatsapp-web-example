@@ -1,7 +1,8 @@
 /* User */
 
 var myUser = {};
-const MESSAGES_ENDPOINT = 'http://data.wechat.liferay.local/messages';
+
+var MESSAGES_ENDPOINT = 'http://data.wechat.com/messages';
 
 if (localStorage.myUser) {
 	myUser = JSON.parse(localStorage.myUser);
@@ -26,23 +27,24 @@ Launchpad.url(MESSAGES_ENDPOINT)
 	.get()
 	.then(function(result) {
 		var messages = result.body();
-
 		for (var i = 0; i < messages.length; i++) {
-			var message = buildMessage(messages[i]);
-			conversation.appendChild(message);
+			appendMessage(messages[i]);
 		}
-
-		conversation.scrollTop = conversation.scrollHeight;
 	});
 
-Launchpad.url(MESSAGES_ENDPOINT)
-	.limit(100)
-	.sort('id', 'asc')
-  .watch()
-  .on('changes', (state) => {
-    console.log(state);
-  });
-
+	Launchpad.url(MESSAGES_ENDPOINT)
+		.limit(1)
+		.sort('id', 'desc')
+		.watch()
+		.on('changes', function(result) {
+			var data = result.pop();
+			var element = document.getElementById(data.id);
+			if (element) {
+				animateMessage(element);
+			} else {
+				appendMessage(data);
+			}
+		});
 
 /* New Message */
 
@@ -50,11 +52,19 @@ var form = document.querySelector('.conversation-compose');
 
 form.addEventListener('submit', newMessage);
 
+function appendMessage(data) {
+	var element = buildMessage(data);
+	element.id = data.id;
+	conversation.appendChild(element);
+	conversation.scrollTop = conversation.scrollHeight;
+}
+
 function newMessage(e) {
 	var input = e.target.input;
 
 	if (input.value) {
 		var data = {
+			id: 'uuid' + Date.now(),
 			author: {
 				id: myUser.id,
 				name: myUser.name,
@@ -64,14 +74,10 @@ function newMessage(e) {
 			time: moment().format('h:mm A')
 		};
 
-		var message = buildMessage(data);
-		conversation.appendChild(message);
+		appendMessage(data);
 
 		Launchpad.url(MESSAGES_ENDPOINT)
-			.post(data)
-			.then(function() {
-				animateMessage(message);
-			});
+			.post(data);
 	}
 
 	input.value = '';
