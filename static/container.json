@@ -1,6 +1,9 @@
 {
-	"id": "static",
-	"env": {
-		"LAUNCHPAD_WEB_PATH": "/"
-	}
+    "id": "static",
+    "type": "wedeploy/java",
+    "image": "wedeploy/engine",
+    "port": 8080,
+    "env": {
+        "WEDEPLOY_WEB_PATH": "/"
+    }
 }

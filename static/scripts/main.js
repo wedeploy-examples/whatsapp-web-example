@@ -2,7 +2,7 @@
 
 var myUser = {};
 
-var MESSAGES_ENDPOINT = 'http://data.wechat.local/messages';
+var MESSAGES_ENDPOINT = 'http://data.wechat.wedeploy.local/messages';
 
 if (localStorage.myUser) {
 	myUser = JSON.parse(localStorage.myUser);

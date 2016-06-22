@@ -1,6 +1,9 @@
 {
-	"id": "data",
-	"env": {
-		"LAUNCHPAD_API_PATH": "/"
-	}
+    "id": "data",
+    "type": "wedeploy/java",
+    "image": "wedeploy/engine",
+    "port": 8080,
+    "env": {
+        "WEDEPLOY_API_PATH": "/"
+    }
 }
