@@ -1,8 +1,6 @@
 {
     "id": "data",
-    "type": "wedeploy/java",
-    "image": "wedeploy/engine",
-    "port": 8080,
+    "type": "wedeploy/engine",
     "env": {
         "WEDEPLOY_API_PATH": "/"
     }

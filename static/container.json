@@ -1,8 +1,6 @@
 {
     "id": "static",
-    "type": "wedeploy/java",
-    "image": "wedeploy/engine",
-    "port": 8080,
+    "type": "wedeploy/engine",
     "env": {
         "WEDEPLOY_WEB_PATH": "/"
     }
