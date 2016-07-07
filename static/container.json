@@ -1,7 +1,4 @@
 {
     "id": "static",
-    "type": "wedeploy/engine",
-    "env": {
-        "WEDEPLOY_WEB_PATH": "/"
-    }
+    "type": "wedeploy/hosting"
 }
