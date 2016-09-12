@@ -2,7 +2,7 @@
 
 var myUser = {};
 
-var MESSAGES_ENDPOINT = 'http://data.whatsapp.wedeploy.me/messages';
+var MESSAGES_ENDPOINT = 'http://data.whatsapp.wedeploy.io/messages';
 
 if (localStorage.myUser) {
 	myUser = JSON.parse(localStorage.myUser);
