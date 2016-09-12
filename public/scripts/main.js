@@ -21,7 +21,7 @@ else {
 
 var conversation = document.querySelector('.conversation-container');
 
-Launchpad.url(MESSAGES_ENDPOINT)
+WeDeploy.url(MESSAGES_ENDPOINT)
 	.limit(100)
 	.sort('id', 'asc')
 	.get()
@@ -32,7 +32,7 @@ Launchpad.url(MESSAGES_ENDPOINT)
 		}
 	});
 
-	Launchpad.url(MESSAGES_ENDPOINT)
+	WeDeploy.url(MESSAGES_ENDPOINT)
 		.limit(1)
 		.sort('id', 'desc')
 		.watch()
@@ -76,7 +76,7 @@ function newMessage(e) {
 
 		appendMessage(data);
 
-		Launchpad.url(MESSAGES_ENDPOINT)
+		WeDeploy.url(MESSAGES_ENDPOINT)
 			.post(data);
 	}
 
