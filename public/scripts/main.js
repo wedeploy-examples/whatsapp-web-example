@@ -2,7 +2,7 @@
 
 var myUser = {};
 
-var MESSAGES_ENDPOINT = 'http://data.whatsapp.wedeploy.io/messages';
+var MESSAGES_ENDPOINT = 'http://data.whatsapp.wedeploy.io';
 
 if (localStorage.myUser) {
 	myUser = JSON.parse(localStorage.myUser);
@@ -21,21 +21,22 @@ else {
 
 var conversation = document.querySelector('.conversation-container');
 
-WeDeploy.url(MESSAGES_ENDPOINT)
+WeDeploy.data(MESSAGES_ENDPOINT)
+	.orderBy('id', 'asc')
 	.limit(100)
-	.sort('id', 'asc')
-	.get()
+	.get('messages')
 	.then(function(result) {
-		var messages = result.body();
+
+		var messages = result;
 		for (var i = 0; i < messages.length; i++) {
 			appendMessage(messages[i]);
 		}
 	});
 
-	WeDeploy.url(MESSAGES_ENDPOINT)
+	WeDeploy.data(MESSAGES_ENDPOINT)
+		.orderBy('id', 'desc')
 		.limit(1)
-		.sort('id', 'desc')
-		.watch()
+		.watch('messages')
 		.on('changes', function(result) {
 			var data = result.pop();
 			var element = document.getElementById(data.id);
@@ -76,8 +77,8 @@ function newMessage(e) {
 
 		appendMessage(data);
 
-		WeDeploy.url(MESSAGES_ENDPOINT)
-			.post(data);
+		WeDeploy.data(MESSAGES_ENDPOINT)
+			.create('messages', data);
 	}
 
 	input.value = '';
