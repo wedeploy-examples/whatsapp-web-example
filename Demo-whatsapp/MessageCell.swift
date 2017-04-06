@@ -72,6 +72,8 @@ class MessageCell: UITableViewCell {
 
 		maxConstraint = MessageCell.MaxMessageWidth
 
+		messageLabel.font = UIFont.systemFont(ofSize: MessageCell.defaultFontSize())
+
 		backgroundColor = .clear
 		selectionStyle = .none
     }
@@ -83,6 +85,10 @@ class MessageCell: UITableViewCell {
 
 		let constant = min(textLabel.frame.width, maxConstraint)
 		self.widthConstraint.constant = max(constant + 16, 116)
+	}
+
+	static func defaultFontSize() -> CGFloat {
+		return 17
 	}
     
 }
