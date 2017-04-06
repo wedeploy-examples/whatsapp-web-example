@@ -58,6 +58,29 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0B256D4E1E96435D0015A036 /* Assets */ = {
+			isa = PBXGroup;
+			children = (
+				0BCF33081E93E3470062118B /* Info.plist */,
+				0BCF33031E93E3470062118B /* Assets.xcassets */,
+				0B2082BD1E95354C00A25C9D /* arrows.png */,
+				0B256D4A1E9620A40015A036 /* backbutton.png */,
+				0BCF330E1E93EDC30062118B /* bg.jpg */,
+				0B256D4C1E96227B0015A036 /* liferay-logo.png */,
+			);
+			name = Assets;
+			sourceTree = "<group>";
+		};
+		0B256D4F1E9643810015A036 /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				0B2082B11E94CB8D00A25C9D /* MessageCell.swift */,
+				0B2082B21E94CB8D00A25C9D /* MessageCell.xib */,
+				0B2082B61E94DCF100A25C9D /* OtherMessageCell.xib */,
+			);
+			name = Cells;
+			sourceTree = "<group>";
+		};
 		0BCF32F01E93E3470062118B = {
 			isa = PBXGroup;
 			children = (
@@ -79,20 +102,13 @@
 		0BCF32FB1E93E3470062118B /* Demo-whatsapp */ = {
 			isa = PBXGroup;
 			children = (
+				0B256D4F1E9643810015A036 /* Cells */,
+				0B256D4E1E96435D0015A036 /* Assets */,
 				0BCF32FC1E93E3470062118B /* AppDelegate.swift */,
 				0BCF32FE1E93E3470062118B /* ViewController.swift */,
 				0BCF33001E93E3470062118B /* Main.storyboard */,
-				0B256D4C1E96227B0015A036 /* liferay-logo.png */,
-				0BCF330E1E93EDC30062118B /* bg.jpg */,
 				0B2082BB1E94E83C00A25C9D /* Colors.swift */,
-				0BCF33031E93E3470062118B /* Assets.xcassets */,
 				0BCF33051E93E3470062118B /* LaunchScreen.storyboard */,
-				0BCF33081E93E3470062118B /* Info.plist */,
-				0B2082B11E94CB8D00A25C9D /* MessageCell.swift */,
-				0B256D4A1E9620A40015A036 /* backbutton.png */,
-				0B2082B21E94CB8D00A25C9D /* MessageCell.xib */,
-				0B2082BD1E95354C00A25C9D /* arrows.png */,
-				0B2082B61E94DCF100A25C9D /* OtherMessageCell.xib */,
 				0B2082B91E94E0FE00A25C9D /* Message.swift */,
 			);
 			path = "Demo-whatsapp";
