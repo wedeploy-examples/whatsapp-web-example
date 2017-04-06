@@ -16,7 +16,7 @@ import UIKit
 
 class MessageCell: UITableViewCell {
 
-	static let MaxMessageWidth: CGFloat = 310
+	static let MaxMessageWidth: CGFloat = UIScreen.main.bounds.width * 0.8
 
 	var message: String? {
 		didSet {
