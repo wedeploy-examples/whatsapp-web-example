@@ -33,8 +33,6 @@ class ViewController: SLKTextViewController {
 	override func viewDidLoad() {
 		super.viewDidLoad()
 
-		currentUser = AppDelegate.currentUser
-
 		configureTableView()
 
 		WeDeploy.data(whatsappDataUrl)

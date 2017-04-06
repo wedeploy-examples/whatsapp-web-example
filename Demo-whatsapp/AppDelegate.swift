@@ -20,21 +20,26 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 	var window: UIWindow?
 
-	static var currentUser: Author?
-
 	func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
-		loadOrCreateCurrentUser()
+
+		let viewController = UIStoryboard(name: "Main", bundle: nil).instantiateInitialViewController() as? UINavigationController
+		(viewController?.topViewController as? ViewController)?.currentUser = loadOrCreateCurrentUser()
+
+		window = UIWindow(frame: UIScreen.main.bounds)
+		window?.rootViewController = viewController
+		window?.makeKeyAndVisible()
+
 		return true
 	}
 
-	func loadOrCreateCurrentUser() {
+	func loadOrCreateCurrentUser() -> Author {
 
 		let userDefaults = UserDefaults.standard
 
 		if let id = userDefaults.string(forKey: "id") {
 			let color = userDefaults.integer(forKey: "color")
 			let name = userDefaults.string(forKey: "name")
-			AppDelegate.currentUser = Author(id: id, name: name!, color: color)
+			return Author(id: id, name: name!, color: color)
 		}
 		else {
 			let user = getRandomUser()
@@ -42,7 +47,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 			userDefaults.set(user.name, forKey: "name")
 			userDefaults.set(user.color, forKey: "color")
 			userDefaults.synchronize()
-			AppDelegate.currentUser = user
+			return user
 		}
 	}
 
