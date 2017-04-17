@@ -1,0 +1,60 @@
+package liferay.com.demo_whatsapp;
+
+/**
+ * @author Víctor Galán Grande
+ */
+
+public class Names {
+	public static String[] names = new String[] {
+		"Jospeh",
+		"Rosemary",
+		"Gregg",
+		"Nohemi",
+		"Helene",
+		"Irish",
+		"Reginia",
+		"Antonietta",
+		"Major",
+		"Dovie",
+		"Alona",
+		"Margarette",
+		"Bob",
+		"Meghan",
+		"Maia",
+		"Arnold",
+		"Jamar",
+		"Tyra",
+		"Kamilah",
+		"Tam",
+		"Noble",
+		"Cordia",
+		"Tana",
+		"Antone",
+		"Santiago",
+		"Grant",
+		"Olene",
+		"Rosa",
+		"Arturo",
+		"Lowell",
+		"Dorotha",
+		"Carolyne",
+		"Lelah",
+		"Troy",
+		"Nia",
+		"Waltraud",
+		"Luther",
+		"Shira",
+		"Pilar",
+		"Bulah",
+		"Danna",
+		"Elwanda",
+		"Leroy",
+		"Jimmie",
+		"Dwight",
+		"Criselda",
+		"Geneva",
+		"Carlton",
+		"Alfred",
+		"Barton"
+	};
+}

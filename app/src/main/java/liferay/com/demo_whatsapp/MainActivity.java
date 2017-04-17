@@ -1,5 +1,6 @@
 package liferay.com.demo_whatsapp;
 
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.DefaultItemAnimator;
@@ -19,6 +20,7 @@ import com.wedeploy.sdk.query.SortOrder;
 import com.wedeploy.sdk.transport.Response;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 import java.util.UUID;
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -43,7 +45,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
 
-		author = new Author(UUID.randomUUID().toString(), "Lleny", 3);
+		loadOrCreateUser();
 
 		bindViews();
 
@@ -167,5 +169,30 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 		int lastPosition = messages.size() - 1;
 		adapter.notifyItemInserted(lastPosition);
 		recyclerView.scrollToPosition(lastPosition);
+	}
+
+	private void loadOrCreateUser() {
+		SharedPreferences sharedPreferences = getSharedPreferences("currentUser", MODE_PRIVATE);
+		String id = sharedPreferences.getString("id", null);
+		int nameIdx = 0;
+		int colorIdx = 0;
+
+		if (id == null) {
+			id = UUID.randomUUID().toString();
+			nameIdx = new Random().nextInt(Names.names.length);
+			colorIdx = new Random().nextInt(Colors.chatColor.length);
+
+			SharedPreferences.Editor editor = sharedPreferences.edit();
+			editor.putString("id", id);
+			editor.putInt("name", nameIdx);
+			editor.putInt("color", colorIdx);
+			editor.apply();
+		}
+		else {
+			nameIdx = sharedPreferences.getInt("name", 0);
+			colorIdx = sharedPreferences.getInt("color", 0);
+		}
+
+		author = new Author(id, Names.names[nameIdx], colorIdx);
 	}
 }
