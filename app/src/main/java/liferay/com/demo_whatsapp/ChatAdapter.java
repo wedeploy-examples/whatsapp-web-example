@@ -17,10 +17,11 @@ import java.util.List;
 public class ChatAdapter extends RecyclerView.Adapter<ChatAdapter.ChatViewHolder> {
 
 	private List<Message> messages;
-	private Context context;
+	private Author author;
 
-	public ChatAdapter(List<Message> messages, Context context) {
+	public ChatAdapter(List<Message> messages, Author author) {
 		this.messages = messages;
+		this.author = author;
 	}
 
 	@Override
@@ -42,7 +43,8 @@ public class ChatAdapter extends RecyclerView.Adapter<ChatAdapter.ChatViewHolder
 
 	@Override
 	public int getItemViewType(int position) {
-		return position % 2 == 0 ? 0: 1;
+		Message message = messages.get(position);
+		return message.getAuthor() == author ? 0 : 1;
 	}
 
 	@Override
@@ -54,11 +56,9 @@ public class ChatAdapter extends RecyclerView.Adapter<ChatAdapter.ChatViewHolder
 		private TextView author;
 		private TextView content;
 		private TextView date;
-		private Context context;
 
-		public ChatViewHolder(View itemView, Context context) {
+		public ChatViewHolder(View itemView) {
 			super(itemView);
-			this.context = context;
 			author = (TextView) itemView.findViewById(R.id.author);
 			content = (TextView) itemView.findViewById(R.id.content);
 			date = (TextView) itemView.findViewById(R.id.date);
@@ -66,7 +66,8 @@ public class ChatAdapter extends RecyclerView.Adapter<ChatAdapter.ChatViewHolder
 
 		public void bind(Message message) {
 			author.setText(message.getAuthor().getName());
-			author.setTextColor(Color.parseColor());
+			int color = Colors.chatColor[message.getAuthor().getColor()];
+			author.setTextColor(color);
 			content.setText(message.getContent());
 			date.setText(message.getTime());
 		}
