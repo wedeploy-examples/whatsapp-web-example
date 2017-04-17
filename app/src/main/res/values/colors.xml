@@ -6,7 +6,7 @@
     <color name="container_message">#fcfcfc</color>
     <color name="other_message">#fefefe</color>
     <color name="personal_message">#dbffbb</color>
-    <color name="date_color">#0000002d</color>
+    <color name="date_color">#2d000000</color>
 
     <color name="color_1">#ef4b4f</color>
     <color name="color_2">#35cd96</color>
