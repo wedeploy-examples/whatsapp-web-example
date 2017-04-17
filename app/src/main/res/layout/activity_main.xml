@@ -2,9 +2,70 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
 	android:layout_width="match_parent"
 	android:layout_height="match_parent"
+	xmlns:app="http://schemas.android.com/apk/res-auto"
 	android:background="@drawable/bg"
 	android:orientation="vertical"
 	>
+	
+	<android.support.v7.widget.Toolbar
+		android:id="@+id/toolbar"
+		android:layout_width="match_parent"
+		android:layout_height="?actionBarSize"
+		android:background="@color/colorPrimary"
+		app:contentInsetLeft="0dp"
+		app:contentInsetStart="0dp"
+		>
+
+		<LinearLayout
+			android:layout_width="match_parent"
+			android:layout_height="match_parent"
+			android:gravity="center|start"
+
+			>
+
+			<ImageView
+				android:layout_width="30dp"
+				android:layout_height="30dp"
+				android:src="@drawable/back_arrow"
+				android:layout_marginLeft="5dp"
+				android:layout_marginStart="5dp"
+				/>
+
+			<de.hdodenhof.circleimageview.CircleImageView
+				android:layout_width="40dp"
+				android:layout_height="40dp"
+				android:layout_margin="2dp"
+				android:src="@drawable/liferay_logo"
+				/>
+
+			<LinearLayout
+				android:layout_width="wrap_content"
+				android:layout_height="match_parent"
+				android:gravity="center|start"
+				android:orientation="vertical"
+				android:layout_margin="5dp"
+				>
+
+				<TextView
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content"
+					android:text="Liferay"
+					android:textSize="18sp"
+					android:textStyle="bold"
+					android:textColor="@android:color/white"/>
+
+				<TextView
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content"
+					android:text="online"
+					android:textColor="@android:color/white"/>
+
+			</LinearLayout>
+
+		</LinearLayout>
+
+
+	</android.support.v7.widget.Toolbar>
 
 	<android.support.v7.widget.RecyclerView
 		android:id="@+id/recyclerViewChat"
@@ -28,7 +89,7 @@
 			android:layout_centerVertical="true"
 			android:layout_margin="5dp"
 			android:background="@drawable/rounded_button"
-			android:src="@drawable/ic_send_white_24dp"
+			android:src="@drawable/send"
 			/>
 
 		<EditText
