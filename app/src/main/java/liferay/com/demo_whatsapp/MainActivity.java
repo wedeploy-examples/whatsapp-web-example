@@ -1,94 +1,73 @@
 package liferay.com.demo_whatsapp;
 
-import android.os.Debug;
-import android.support.v7.app.ActionBar;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.KeyEvent;
 import android.view.View;
-import android.view.ViewGroup;
 import android.view.inputmethod.EditorInfo;
-import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
-import android.widget.LinearLayout;
 import android.widget.TextView;
-
 import com.wedeploy.sdk.Callback;
+import com.wedeploy.sdk.RealTime;
 import com.wedeploy.sdk.WeDeploy;
-import com.wedeploy.sdk.auth.Auth;
+import com.wedeploy.sdk.query.SortOrder;
 import com.wedeploy.sdk.transport.Response;
-
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
-
 import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
+import org.json.JSONArray;
+import org.json.JSONException;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
+
+	private static String DATA_URL = "http://data.whatsapp.wedeploy.io";
+	private static String LOG_ID = "Demo-whatsapp";
 
 	private RecyclerView recyclerView;
 	private EditText editText;
 	private ImageButton sendButton;
 
-	private List<String> messages = new ArrayList<>();
+	private List<Message> messages = new ArrayList<>();
 	private ChatAdapter adapter;
+	private Author author;
+
+	private WeDeploy weDeploy;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
 
-		Author author = new Author(UUID.randomUUID().toString(), "Rossmery", "color-3");
+		author = new Author(UUID.randomUUID().toString(), "Lleny", 3);
 
-		recyclerView = (RecyclerView) findViewById(R.id.recyclerViewChat);
-		editText = (EditText) findViewById(R.id.editMessage);
-		sendButton = (ImageButton) findViewById(R.id.send_button);
-		sendButton.setOnClickListener(this);
+		bindViews();
 
-		LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false);
-		linearLayoutManager.setStackFromEnd(true);
-
-		recyclerView.setHasFixedSize(true);
-		recyclerView.setLayoutManager(linearLayoutManager);
-		recyclerView.setItemAnimator(new DefaultItemAnimator());
-
-		adapter = new ChatAdapter(messages);
+		adapter = new ChatAdapter(messages, author);
 		recyclerView.setAdapter(adapter);
 
-		editText.setOnEditorActionListener(new TextView.OnEditorActionListener() {
-			@Override
-			public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
-				boolean handled = false;
-				if (actionId == EditorInfo.IME_ACTION_SEND) {
-					addMessage(v.getText().toString());
-					handled = true;
-				}
-				return handled;
-			}
-		});
+		weDeploy = new WeDeploy.Builder().build();
 
-		WeDeploy weDeploy = new WeDeploy.Builder().build();
-
-		weDeploy.data("http://data.whatsapp.wedeploy.io")
+		weDeploy.data(DATA_URL)
+			.limit(100)
+			.orderBy("id", SortOrder.ASCENDING)
 			.get("messages")
 			.execute(new Callback() {
 				@Override
 				public void onSuccess(Response response) {
 					try {
 						JSONArray array = new JSONArray(response.getBody());
-						List<Message> messages1 = new ArrayList<Message>(array.length());
+						List<Message> messages1 = new ArrayList<>(array.length());
 						for (int i = 0; i < array.length(); i++) {
 							messages1.add(Message.fromJson(array.getJSONObject(i)));
 						}
 
-						Log.d("AAAA", messages1.toString());
+						messages.addAll(messages1);
+						adapter.notifyDataSetChanged();
 					} catch (JSONException e) {
 						e.printStackTrace();
 					}
@@ -96,22 +75,94 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
 				@Override
 				public void onFailure(Exception e) {
-					Log.e("Error", ""+e);
+					Log.e("Error", "" + e);
+				}
+			});
+
+		weDeploy.data(DATA_URL)
+			.orderBy("id", SortOrder.DESCENDING)
+			.limit(1)
+			.watch("messages")
+			.on("changes", new RealTime.OnEventListener() {
+				@Override
+				public void onEvent(final Object... objects) {
+					runOnUiThread(new Runnable() {
+						@Override
+						public void run() {
+							try {
+								JSONArray array = (JSONArray) objects[0];
+								Message message = Message.fromJson(array.getJSONObject(0));
+								if (!messages.contains(message)) {
+									addMessage(message);
+								}
+							} catch (JSONException e) {
+								Log.e(LOG_ID, e.getMessage());
+							}
+						}
+					});
 				}
 			});
 	}
 
 	@Override
 	public void onClick(View view) {
-		addMessage(editText.getText().toString());
+		createAndAddMessage(editText.getText().toString());
 	}
 
-	private void addMessage(String message) {
-		if (message.isEmpty()) {
-			return;
-		}
+	private void bindViews() {
+		recyclerView = (RecyclerView) findViewById(R.id.recyclerViewChat);
+		editText = (EditText) findViewById(R.id.editMessage);
+		sendButton = (ImageButton) findViewById(R.id.send_button);
+		sendButton.setOnClickListener(this);
 
-		editText.setText("");
+		LinearLayoutManager linearLayoutManager =
+			new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false);
+		linearLayoutManager.setStackFromEnd(true);
+
+		recyclerView.setHasFixedSize(true);
+		recyclerView.setLayoutManager(linearLayoutManager);
+		recyclerView.setItemAnimator(new DefaultItemAnimator());
+
+		editText.setOnEditorActionListener(new TextView.OnEditorActionListener() {
+			@Override
+			public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
+				boolean handled = false;
+				if (actionId == EditorInfo.IME_ACTION_SEND) {
+					createAndAddMessage(v.getText().toString());
+					handled = true;
+				}
+				return handled;
+			}
+		});
+	}
+
+	private void createAndAddMessage(String content) {
+		if (!content.isEmpty()) {
+			Message message = new Message(content, author);
+			try {
+				weDeploy.data(DATA_URL)
+					.create("messages", message.toJson())
+					.execute(new Callback() {
+						@Override
+						public void onSuccess(Response response) {
+							Log.d(LOG_ID, "Message added");
+						}
+
+						@Override
+						public void onFailure(Exception e) {
+							Log.e(LOG_ID, e.getMessage());
+						}
+					});
+			} catch (JSONException ex) {
+				Log.e(LOG_ID, ex.getMessage());
+			}
+			addMessage(message);
+
+			editText.setText("");
+		}
+	}
+
+	private void addMessage(Message message) {
 		messages.add(message);
 		int lastPosition = messages.size() - 1;
 		adapter.notifyItemInserted(lastPosition);
