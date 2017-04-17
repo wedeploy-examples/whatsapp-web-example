@@ -64,15 +64,15 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 				public void onSuccess(Response response) {
 					try {
 						JSONArray array = new JSONArray(response.getBody());
-						List<Message> messages1 = new ArrayList<>(array.length());
+						List<Message> newMessages = new ArrayList<>(array.length());
 						for (int i = 0; i < array.length(); i++) {
-							messages1.add(Message.fromJson(array.getJSONObject(i)));
+							newMessages.add(Message.fromJson(array.getJSONObject(i)));
 						}
 
-						messages.addAll(messages1);
+						messages.addAll(newMessages);
 						adapter.notifyDataSetChanged();
 					} catch (JSONException e) {
-						e.printStackTrace();
+						Log.e(LOG_ID, "" + e);
 					}
 				}
 
@@ -99,7 +99,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 									addMessage(message);
 								}
 							} catch (JSONException e) {
-								Log.e(LOG_ID, e.getMessage());
+								Log.e(LOG_ID, "" + e);
 							}
 						}
 					});
@@ -156,11 +156,11 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
 						@Override
 						public void onFailure(Exception e) {
-							Log.e(LOG_ID, e.getMessage());
+							Log.e(LOG_ID, "" + e);
 						}
 					});
-			} catch (JSONException ex) {
-				Log.e(LOG_ID, ex.getMessage());
+			} catch (JSONException e) {
+				Log.e(LOG_ID, "" + e);
 			}
 			addMessage(message);
 
