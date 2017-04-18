@@ -6,6 +6,6 @@ target 'Demo-whatsapp' do
   use_frameworks!
 
   pod 'SlackTextViewController'
-  pod 'WeDeploy', :path => '../api-swift'
+  pod 'WeDeploy', :git => 'https://github.com/victorg1991/api-swift'
 
 end
