@@ -27,7 +27,7 @@ dependencies {
 
     compile 'com.android.support:recyclerview-v7:25.3.0'
     compile 'com.android.support:appcompat-v7:25.3.0'
-    compile 'com.wedeploy:android-sdk:1.0-SNAPSHOT'
+    compile 'com.wedeploy:com.wedeploy.android:beta-20170505'
     compile 'de.hdodenhof:circleimageview:2.1.0'
     testCompile 'junit:junit:4.12'
 }
