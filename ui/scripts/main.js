@@ -2,7 +2,7 @@
 
 var myUser = {};
 
-var MESSAGES_ENDPOINT = 'http://data.whatsapp.wedeploy.io';
+var MESSAGES_ENDPOINT = 'data-whatsapp.wedeploy.io';
 
 if (localStorage.myUser) {
 	myUser = JSON.parse(localStorage.myUser);
@@ -33,7 +33,8 @@ WeDeploy.data(MESSAGES_ENDPOINT)
 		}
 	});
 
-	WeDeploy.data(MESSAGES_ENDPOINT)
+	WeDeploy
+		.data(MESSAGES_ENDPOINT)
 		.orderBy('id', 'desc')
 		.limit(1)
 		.watch('messages')
@@ -77,7 +78,8 @@ function newMessage(e) {
 
 		appendMessage(data);
 
-		WeDeploy.data(MESSAGES_ENDPOINT)
+		WeDeploy
+			.data(MESSAGES_ENDPOINT)
 			.create('messages', data);
 	}
 
