@@ -28,7 +28,7 @@ import org.json.JSONException;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
-	private static String DATA_URL = "http://data.whatsapp.wedeploy.io";
+	private static String DATA_URL = "https://data-whatsapp.wedeploy.sh";
 	private static String LOG_ID = "Demo-whatsapp";
 
 	private RecyclerView recyclerView;
