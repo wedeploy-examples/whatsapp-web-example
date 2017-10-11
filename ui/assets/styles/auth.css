@@ -1,0 +1,62 @@
+/* Sign in/Create User */
+
+.screen-container {
+  background-color: #ffffff;
+}
+
+.auth-container {
+  text-align: center;
+  width: 100%;
+}
+
+.title {
+  color: #005e54;
+  font-size: 24px;
+  margin: 48px 0 24px;
+}
+
+input {
+  border: none;
+  border-bottom: 1px solid #005e54;
+  border-radius: 0;
+  color: rgb(14,20,26);
+  font-size: 16px;
+  margin-bottom: 12px;
+  outline: none;
+  padding: 12px 0;
+  width: 80%;
+}
+
+input::-webkit-input-placeholder { /* Chrome/Opera/Safari */
+  color: rgba(14,20,26,.8);
+}
+input::-moz-placeholder { /* Firefox 19+ */
+  color: rgba(14,20,26,.8);
+}
+input:-ms-input-placeholder { /* IE 10+ */
+  color: rgba(14,20,26,.8);
+}
+input:-moz-placeholder { /* Firefox 18- */
+  color: rgba(14,20,26,.8);
+}
+
+.submit-btn {
+  border: none;
+  background-color: #005e54;
+  color: #ffffff;
+  font-size: 16px;
+  margin: 24px 0 12px;
+  outline: none;
+  padding: 12px 0;
+  width: 80%;
+  cursor: pointer;
+}
+
+a {
+  color: rgb(14,20,26);
+  text-decoration: none;
+}
+
+a:hover {
+  color: #005e54;
+}

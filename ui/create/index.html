@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Sign In - MyChat</title>
+  <title>Create Account - MyChat</title>
 
   <meta name="theme-color" content="#054d44">
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -46,12 +46,13 @@
           <div class="app">
             <div class="auth-container">
               <p class="title">MyChat</p>
-              <form class="login" onsubmit="signIn(); return false;">
+              <form class="create" onsubmit="userCreate(); return false;">
+                <input type="text" name="Name" placeholder="Name">
                 <input type="text" name="email" placeholder="Email">
-                <input type="text" name="password" placeholder="Password">
-                <button class="submit-btn" type="submit" name="submit">Sign In</button>
+                <input type="password" name="password" placeholder="Password">
+                <button class="submit-btn" type="submit" name="submit">Create Account</button>
               </form>
-              <a href="/create/">Create An Account</a>
+              <a href="/">Sign In</a>
             </div>
           </div>
         </div>
@@ -63,6 +64,6 @@
   <script src="https://cdn.wedeploy.com/api/3.4.0/wedeploy.js"></script>
 
   <script src="/assets/scripts/time.js"></script>
-  <script src="/assets/scripts/sign-in.js"></script>
+  <script src="/assets/scripts/create.js"></script>
 </body>
 </html>

@@ -1,27 +1,41 @@
+var auth = WeDeploy.auth('auth-weapp.wedeploy.io').withCredentials(false);
+var data_endpoint = 'data-weapp.wedeploy.io';
+
+
+/* Redirect if no user signed in */
+
+if (auth.currentUser == null) {document.location.href = '/';}
+
+/* Sign Out */
+
+function signOut() {
+  auth
+    .signOut()
+    .then(() => {
+      document.location.href = '/';
+    });
+}
+
+
 /* User */
 
-var myUser = {};
+// if (localStorage.myUser) {
+// 	myUser = JSON.parse(localStorage.myUser);
+// }
+// else {
+// 	myUser = {
+// 		"id": faker.randomid),
+// 		"name": faker.name.firstName(),
+// 		"color": 'color-' + Math.floor(Math.random() * 19)
+// 	};
 
-var MESSAGES_ENDPOINT = 'data-whatsapp.wedeploy.io';
+// 	localStorage.setItem('myUser', JSON.stringify(myUser));
+// }
 
-if (localStorage.myUser) {
-	myUser = JSON.parse(localStorage.myUser);
-}
-else {
-	myUser = {
-		"id": faker.random.uuid(),
-		"name": faker.name.firstName(),
-		"color": 'color-' + Math.floor(Math.random() * 19)
-	};
+/* Old Messages */
 
-	localStorage.setItem('myUser', JSON.stringify(myUser));
-}
-
-/* First Load */
-
-var conversation = document.querySelector('.conversation-container');
-
-WeDeploy.data(MESSAGES_ENDPOINT)
+WeDeploy
+	.data(data_endpoint).withCredentials(false)
 	.orderBy('id', 'asc')
 	.limit(100)
 	.get('messages')
@@ -34,7 +48,7 @@ WeDeploy.data(MESSAGES_ENDPOINT)
 	});
 
 	WeDeploy
-		.data(MESSAGES_ENDPOINT)
+		.data(data_endpoint).withCredentials(false)
 		.orderBy('id', 'desc')
 		.limit(1)
 		.watch('messages')
@@ -50,6 +64,7 @@ WeDeploy.data(MESSAGES_ENDPOINT)
 
 /* New Message */
 
+var conversation = document.querySelector('.conversation-container');
 var form = document.querySelector('.conversation-compose');
 
 form.addEventListener('submit', newMessage);
@@ -64,24 +79,28 @@ function appendMessage(data) {
 function newMessage(e) {
 	var input = e.target.input;
 
-	if (input.value) {
-		var data = {
-			id: 'uuid' + Date.now(),
-			author: {
-				id: myUser.id,
-				name: myUser.name,
-				color: myUser.color
-			},
-			content: input.value,
-			time: moment().format('h:mm A')
-		};
+	WeDeploy.data(data_endpoint).withCredentials(false)
+		.get('friends')
+		.then(function(friend) {
+			if (input.value) {
+				var data = {
+					id: friend.id + Date.now(),
+					author: {
+						id: friend.id,
+						name: friend.name,
+						color: friend.color
+					},
+					content: input.value,
+					time: moment().format('h:mm A')
+				};
 
-		appendMessage(data);
+				appendMessage(data);
 
-		WeDeploy
-			.data(MESSAGES_ENDPOINT)
-			.create('messages', data);
-	}
+				WeDeploy
+					.data(data_endpoint).withCredentials(false)
+					.create('messages', data);
+			}
+		})
 
 	input.value = '';
 	conversation.scrollTop = conversation.scrollHeight;
@@ -113,13 +132,3 @@ function animateMessage(message) {
 	var tick = message.querySelector('.tick');
 	tick.classList.remove('tick-animation');
 }
-
-/* Time */
-
-var deviceTime = document.querySelector('.status-bar .time');
-
-deviceTime.innerHTML = moment().format('h:mm');
-
-setInterval(function() {
-	deviceTime.innerHTML = moment().format('h:mm');
-}, 1000);

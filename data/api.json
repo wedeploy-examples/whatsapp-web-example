@@ -2,5 +2,9 @@
 	{
 		"path": "/messages/*",
 		"data": true
+	},
+	{
+		"path": "/friends/*",
+		"data": true
 	}
 ]
