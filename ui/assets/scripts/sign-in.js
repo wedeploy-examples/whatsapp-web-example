@@ -1,4 +1,4 @@
-var auth = WeDeploy.auth('auth-weapp.wedeploy.io').withCredentials(false);
+var auth = WeDeploy.auth('auth-mychatapp.wedeploy.io').withCredentials(false);
 
 
 /* Redirect if user is signed in */

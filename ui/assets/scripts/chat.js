@@ -1,5 +1,5 @@
-var auth = WeDeploy.auth('auth-weapp.wedeploy.io').withCredentials(false);
-var data_endpoint = 'data-weapp.wedeploy.io';
+var auth = WeDeploy.auth('auth-mychatapp.wedeploy.io').withCredentials(false);
+var data_endpoint = 'data-mychatapp.wedeploy.io';
 
 
 /* Redirect if no user signed in */
