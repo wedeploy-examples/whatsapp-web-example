@@ -1,5 +1,5 @@
-var auth = WeDeploy.auth('auth-mychatapp.wedeploy.io').withCredentials(false);
-var data = WeDeploy.data('data-mychatapp.wedeploy.io').withCredentials(false);
+var auth = WeDeploy.auth('auth-mychatapp.wedeploy.io');
+var data = WeDeploy.data('data-mychatapp.wedeploy.io');
 
 
 /* Redirect if user is signed in */
@@ -15,7 +15,8 @@ function userCreate() {
 	auth.createUser({
 		name: create.name.value,
 		email: create.email.value,
-		password: create.password.value
+		password: create.password.value,
+		color: 'color-' + Math.floor(Math.random() * 19)
 	})
 	.then(function(newUser) {
 		alert('Account successfully created!');

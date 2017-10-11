@@ -1,10 +1,11 @@
-var auth = WeDeploy.auth('auth-mychatapp.wedeploy.io').withCredentials(false);
+var auth = WeDeploy.auth('auth-mychatapp.wedeploy.io');
 var data_endpoint = 'data-mychatapp.wedeploy.io';
+var currentUser = WeDeploy.auth('auth-mychatapp.wedeploy.io').currentUser;
 
 
 /* Redirect if no user signed in */
 
-if (auth.currentUser == null) {document.location.href = '/';}
+if (currentUser == null) {document.location.href = '/';}
 
 /* Sign Out */
 
@@ -16,26 +17,10 @@ function signOut() {
     });
 }
 
-
-/* User */
-
-// if (localStorage.myUser) {
-// 	myUser = JSON.parse(localStorage.myUser);
-// }
-// else {
-// 	myUser = {
-// 		"id": faker.randomid),
-// 		"name": faker.name.firstName(),
-// 		"color": 'color-' + Math.floor(Math.random() * 19)
-// 	};
-
-// 	localStorage.setItem('myUser', JSON.stringify(myUser));
-// }
-
 /* Old Messages */
 
 WeDeploy
-	.data(data_endpoint).withCredentials(false)
+	.data(data_endpoint)
 	.orderBy('id', 'asc')
 	.limit(100)
 	.get('messages')
@@ -48,7 +33,7 @@ WeDeploy
 	});
 
 	WeDeploy
-		.data(data_endpoint).withCredentials(false)
+		.data(data_endpoint)
 		.orderBy('id', 'desc')
 		.limit(1)
 		.watch('messages')
@@ -69,6 +54,34 @@ var form = document.querySelector('.conversation-compose');
 
 form.addEventListener('submit', newMessage);
 
+function newMessage(e) {
+	var input = e.target.input;
+
+	if (input.value) {
+		var data = {
+			id: currentUser.id + Date.now(),
+			author: {
+				id: currentUser.id,
+				name: currentUser.name,
+				color: currentUser.color
+			},
+			content: input.value,
+			time: moment().format('h:mm A')
+		};
+
+		WeDeploy
+			.data(data_endpoint)
+			.create('messages', data)
+			.then(function(response) {
+				input.value = '';
+				conversation.scrollTop = conversation.scrollHeight;
+				appendMessage(data);
+			});
+	}
+
+	e.preventDefault();
+}
+
 function appendMessage(data) {
 	var element = buildMessage(data);
 	element.id = data.id;
@@ -76,41 +89,9 @@ function appendMessage(data) {
 	conversation.scrollTop = conversation.scrollHeight;
 }
 
-function newMessage(e) {
-	var input = e.target.input;
-
-	WeDeploy.data(data_endpoint).withCredentials(false)
-		.get('friends')
-		.then(function(friend) {
-			if (input.value) {
-				var data = {
-					id: friend.id + Date.now(),
-					author: {
-						id: friend.id,
-						name: friend.name,
-						color: friend.color
-					},
-					content: input.value,
-					time: moment().format('h:mm A')
-				};
-
-				appendMessage(data);
-
-				WeDeploy
-					.data(data_endpoint).withCredentials(false)
-					.create('messages', data);
-			}
-		})
-
-	input.value = '';
-	conversation.scrollTop = conversation.scrollHeight;
-
-	e.preventDefault();
-}
-
 function buildMessage(data) {
-	var color = (data.author.id !== myUser.id) ? data.author.color : '';
-	var sender = (data.author.id !== myUser.id) ? 'received' : 'sent';
+	var color = (data.author.id !== currentUser.id) ? data.author.color : '';
+	var sender = (data.author.id !== currentUser.id) ? 'received' : 'sent';
 
 	var element = document.createElement('div');
 
