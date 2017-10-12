@@ -3,22 +3,25 @@ var auth = WeDeploy.auth('auth-mychatapp.wedeploy.io');
 
 /* Redirect if user is signed in */
 
-if (auth.currentUser) {document.location.href = '/chat/';}
+if (auth.currentUser) {document.location.href = './chat/index.html';}
 
 
 /* Create User Method */
 
 var login = document.querySelector('.login');
+var button = document.querySelector('button');
 
 function signIn() {
 	auth.signInWithEmailAndPassword(login.email.value, login.password.value)
 		.then(function() {
-			login.reset();
-			document.location.href = '/chat/';
+			button.disabled = true;
+			button.innerText = 'Loading...';
+			document.location.href = './chat/index.html';
 		})
 		.catch(function(err) {
+			button.disabled = false;
+			button.innerText = 'Create Account';
 			alert('Sign-in failed.');
-			signIn.reset();
 			console.log(err);
 		});
 }

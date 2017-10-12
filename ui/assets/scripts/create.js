@@ -4,12 +4,13 @@ var data = WeDeploy.data('data-mychatapp.wedeploy.io');
 
 /* Redirect if user is signed in */
 
-if (auth.currentUser) {document.location.href = '/chat/';}
+if (auth.currentUser) {document.location.href = '../chat/index.html';}
 
 
 /* Create User Method */
 
 var create = document.querySelector('.create');
+var button = document.querySelector('button');
 
 function userCreate() {
 	auth.createUser({
@@ -18,36 +19,24 @@ function userCreate() {
 		password: create.password.value,
 		color: 'color-' + Math.floor(Math.random() * 19)
 	})
-	.then(function(newUser) {
-		alert('Account successfully created!');
+	.then(function() {
+		button.disabled = true;
+		button.innerText = 'Loading...';
 
-		data
-			.create('friends', {
-				name: create.name.value,
-				email: create.email.value,
-				password: create.password.value,
-				id: newUser.id,
-				color: 'color-' + Math.floor(Math.random() * 19)
-			})
-			.then(function(newUser) {
-				auth
-					.signInWithEmailAndPassword(newUser.email, newUser.password)
-					.then(function() {
-						document.location.href = '/chat/';
-					})
-					.catch(function(err) {
-						console.log(err)
-					});
+		auth
+			.signInWithEmailAndPassword(create.email.value, create.password.value)
+			.then(function() {
+				document.location.href = '../chat/index.html';
 			})
 			.catch(function(err) {
+				alert('Sign-in failed.');
 				console.log(err)
 			});
-
-		create.reset();
 	})
 	.catch(function(err) {
-		alert('Sign-up failed. Try another email.');
-		create.reset();
+		button.disabled = false;
+		button.innerText = 'Create Account';
+		alert('Sign-up failed.');
 		console.log(err);
 	})
 };

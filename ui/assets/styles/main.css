@@ -76,6 +76,10 @@ body {
     overflow: hidden;
     height: 100%;
     width: 100%;
+
+    &::before {
+      display: none;
+    }
   }
 
   .screen {
@@ -90,7 +94,7 @@ body {
     display: none;
   }
 
-  .screen-container {
+  .screen {
     position: absolute;
     top: 0;
     left: 0;
@@ -99,9 +103,9 @@ body {
   }
 
   .conversation {
-    height: calc(100vh - 55px);
+    height: calc(var(--vh, 100vh) - 55px);
   }
   .conversation .conversation-container {
-    height: calc(100vh - 120px);
+    height: calc(var(--vh, 100vh) - 120px);
   }
 }

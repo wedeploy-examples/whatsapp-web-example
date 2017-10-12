@@ -5,7 +5,18 @@ var currentUser = WeDeploy.auth('auth-mychatapp.wedeploy.io').currentUser;
 
 /* Redirect if no user signed in */
 
-if (currentUser == null) {document.location.href = '/';}
+if (currentUser == null) {document.location.href = '../index.html';}
+
+/* Screen Size */
+
+window.addEventListener('load', onresize);
+window.addEventListener('resize', onresize);
+
+onresize();
+
+function onresize() {
+	document.documentElement.style.setProperty('--vh', `${window.innerHeight}px`);
+}
 
 /* Sign Out */
 
@@ -13,11 +24,11 @@ function signOut() {
   auth
     .signOut()
     .then(() => {
-      document.location.href = '/';
+      document.location.href = '../index.html';
     });
 }
 
-/* Old Messages */
+/* Get previous 100 messages */
 
 WeDeploy
 	.data(data_endpoint)
@@ -59,7 +70,7 @@ function newMessage(e) {
 
 	if (input.value) {
 		var data = {
-			id: currentUser.id + Date.now(),
+			id: 'uuid' + Date.now(),
 			author: {
 				id: currentUser.id,
 				name: currentUser.name,
