@@ -1,10 +1,9 @@
 [
 	{
 		"path": "/messages/*",
-		"data": true
-	},
-	{
-		"path": "/friends/*",
-		"data": true
+		"data": true,
+		"auth": {
+			"validator": "$auth != null"
+		}
 	}
 ]
