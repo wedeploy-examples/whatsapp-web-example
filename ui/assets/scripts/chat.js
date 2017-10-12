@@ -32,6 +32,7 @@ function signOut() {
 
 WeDeploy
 	.data(data_endpoint)
+	.auth(currentUser)
 	.orderBy('id', 'asc')
 	.limit(100)
 	.get('messages')
@@ -43,20 +44,21 @@ WeDeploy
 		}
 	});
 
-	WeDeploy
-		.data(data_endpoint)
-		.orderBy('id', 'desc')
-		.limit(1)
-		.watch('messages')
-		.on('changes', function(result) {
-			var data = result.pop();
-			var element = document.getElementById(data.id);
-			if (element) {
-				animateMessage(element);
-			} else {
-				appendMessage(data);
-			}
-		});
+WeDeploy
+	.data(data_endpoint)
+	.auth(currentUser)
+	.orderBy('id', 'desc')
+	.limit(1)
+	.watch('messages')
+	.on('changes', function(result) {
+		var data = result.pop();
+		var element = document.getElementById(data.id);
+		if (element) {
+			animateMessage(element);
+		} else {
+			appendMessage(data);
+		}
+	});
 
 /* New Message */
 
@@ -82,6 +84,7 @@ function newMessage(e) {
 
 		WeDeploy
 			.data(data_endpoint)
+			.auth(currentUser)
 			.create('messages', data)
 			.then(function(response) {
 				input.value = '';
