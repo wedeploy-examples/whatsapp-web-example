@@ -28,6 +28,7 @@ body {
 
 .marvel-device .screen {
   text-align: left;
+  box-shadow: none;
 }
 
 .screen-container {
