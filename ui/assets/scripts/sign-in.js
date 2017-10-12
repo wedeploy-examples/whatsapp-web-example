@@ -20,7 +20,7 @@ function signIn() {
 		})
 		.catch(function(err) {
 			button.disabled = false;
-			button.innerText = 'Create Account';
+			button.innerText = 'Sign In';
 			alert('Sign-in failed.');
 			console.log(err);
 		});
