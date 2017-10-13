@@ -78,9 +78,8 @@ WeDeploy
  */
 
 var conversation = document.querySelector('.conversation-container');
-var form = document.querySelector('.conversation-compose');
 
-form.addEventListener('submit', newMessage);
+document.querySelector('.conversation-compose').addEventListener('submit', newMessage);
 
 function newMessage(e) {
 	var input = e.target.input;

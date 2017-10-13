@@ -16,19 +16,17 @@ if (auth.currentUser) {document.location.href = './chat/index.html';}
  */
 
 var login = document.querySelector('.login');
-var button = document.querySelector('button');
 
 function signIn() {
 	auth.signInWithEmailAndPassword(login.email.value, login.password.value)
 		.then(function() {
-			button.disabled = true;
-			button.innerText = 'Loading...';
+			login.submit.disabled = true;
+			login.submit.innerText = 'Loading...';
 			document.location.href = './chat/index.html';
 		})
-		.catch(function(err) {
-			button.disabled = false;
-			button.innerText = 'Sign In';
+		.catch(function() {
+			login.submit.disabled = false;
+			login.submit.innerText = 'Sign In';
 			alert('Sign-in failed.');
-			console.log(err);
 		});
 }

@@ -18,7 +18,6 @@ if (auth.currentUser) {document.location.href = '../chat/index.html';}
  */
 
 var create = document.querySelector('.create');
-var button = document.querySelector('button');
 
 function userCreate() {
 	auth.createUser({
@@ -28,23 +27,21 @@ function userCreate() {
 		color: 'color-' + Math.floor(Math.random() * 19)
 	})
 	.then(function() {
-		button.disabled = true;
-		button.innerText = 'Loading...';
+		create.submit.disabled = true;
+		create.submit.innerText = 'Loading...';
 
 		auth
 			.signInWithEmailAndPassword(create.email.value, create.password.value)
 			.then(function() {
 				document.location.href = '../chat/index.html';
 			})
-			.catch(function(err) {
+			.catch(function() {
 				alert('Sign-in failed.');
-				console.log(err)
 			});
 	})
-	.catch(function(err) {
-		button.disabled = false;
-		button.innerText = 'Create Account';
+	.catch(function() {
+		create.submit.disabled = false;
+		create.submit.innerText = 'Create Account';
 		alert('Sign-up failed.');
-		console.log(err);
 	})
 };
