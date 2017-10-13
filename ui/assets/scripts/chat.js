@@ -10,7 +10,7 @@ var currentUser = WeDeploy.auth('auth-mychatapp.wedeploy.io').currentUser;
  * Redirect (if no current user)
  */
 
-if (currentUser == null) {document.location.href = '../index.html';}
+if (currentUser == null) {document.location.href = './index.html';}
 
 /**
  * Sign Out
@@ -20,7 +20,7 @@ function signOut() {
   auth
     .signOut()
     .then(() => {
-      document.location.href = '../index.html';
+      document.location.href = './index.html';
     });
 }
 

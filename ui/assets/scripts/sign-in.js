@@ -8,7 +8,7 @@ var auth = WeDeploy.auth('auth-mychatapp.wedeploy.io');
  * Redirect (if current user exists)
  */
 
-if (auth.currentUser) {document.location.href = './chat/index.html';}
+if (auth.currentUser) {document.location.href = './chat.html';}
 
 
 /**
@@ -22,7 +22,7 @@ function signIn() {
 		.then(function() {
 			login.submit.disabled = true;
 			login.submit.innerText = 'Loading...';
-			document.location.href = './chat/index.html';
+			document.location.href = './chat.html';
 		})
 		.catch(function() {
 			login.submit.disabled = false;

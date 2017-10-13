@@ -10,7 +10,7 @@ var data = WeDeploy.data('data-mychatapp.wedeploy.io');
  * Redirect (if current user exists)
  */
 
-if (auth.currentUser) {document.location.href = '../chat/index.html';}
+if (auth.currentUser) {document.location.href = './chat.html';}
 
 
 /**
@@ -33,7 +33,7 @@ function userCreate() {
 		auth
 			.signInWithEmailAndPassword(create.email.value, create.password.value)
 			.then(function() {
-				document.location.href = '../chat/index.html';
+				document.location.href = './chat.html';
 			})
 			.catch(function() {
 				alert('Sign-in failed.');
