@@ -1,12 +1,4 @@
 /**
- * WeDeploy Endpoints
- */
-
-var auth = WeDeploy.auth('auth-mychatapp.wedeploy.io');
-var data_endpoint = 'data-mychatapp.wedeploy.io';
-var currentUser = WeDeploy.auth('auth-mychatapp.wedeploy.io').currentUser;
-
-/**
  * Redirect (if no current user)
  */
 

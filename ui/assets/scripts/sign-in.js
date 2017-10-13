@@ -1,10 +1,4 @@
 /**
- * WeDeploy Endpoints
- */
-
-var auth = WeDeploy.auth('auth-mychatapp.wedeploy.io');
-
-/**
  * Redirect (if current user exists)
  */
 
