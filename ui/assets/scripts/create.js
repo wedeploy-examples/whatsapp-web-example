@@ -1,13 +1,21 @@
+/**
+ * WeDeploy Endpoints
+ */
+
 var auth = WeDeploy.auth('auth-mychatapp.wedeploy.io');
 var data = WeDeploy.data('data-mychatapp.wedeploy.io');
 
 
-/* Redirect if user is signed in */
+/**
+ * Redirect (if current user exists)
+ */
 
 if (auth.currentUser) {document.location.href = '../chat/index.html';}
 
 
-/* Create User Method */
+/**
+ * Create user
+ */
 
 var create = document.querySelector('.create');
 var button = document.querySelector('button');

@@ -1,24 +1,20 @@
+/**
+ * WeDeploy Endpoints
+ */
+
 var auth = WeDeploy.auth('auth-mychatapp.wedeploy.io');
 var data_endpoint = 'data-mychatapp.wedeploy.io';
 var currentUser = WeDeploy.auth('auth-mychatapp.wedeploy.io').currentUser;
 
-
-/* Redirect if no user signed in */
+/**
+ * Redirect (if no current user)
+ */
 
 if (currentUser == null) {document.location.href = '../index.html';}
 
-/* Screen Size */
-
-window.addEventListener('load', onresize);
-window.addEventListener('resize', onresize);
-
-onresize();
-
-function onresize() {
-	document.documentElement.style.setProperty('--vh', `${window.innerHeight}px`);
-}
-
-/* Sign Out */
+/**
+ * Sign Out
+ */
 
 function signOut() {
   auth
@@ -28,7 +24,20 @@ function signOut() {
     });
 }
 
-/* Get previous 100 messages */
+/**
+ * Get screen size
+ */
+
+window.addEventListener('load', onresize);
+window.addEventListener('resize', onresize);
+
+function onresize() {
+	document.documentElement.style.setProperty('--vh', `${window.innerHeight}px`);
+}
+
+/**
+ * Get Old Messages
+ */
 
 WeDeploy
 	.data(data_endpoint)
@@ -43,6 +52,10 @@ WeDeploy
 			appendMessage(messages[i]);
 		}
 	});
+
+/**
+ * Watch New Messages
+ */
 
 WeDeploy
 	.data(data_endpoint)
@@ -60,7 +73,9 @@ WeDeploy
 		}
 	});
 
-/* New Message */
+/**
+ * New Message
+ */
 
 var conversation = document.querySelector('.conversation-container');
 var form = document.querySelector('.conversation-compose');
