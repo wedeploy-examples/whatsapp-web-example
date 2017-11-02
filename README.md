@@ -1,10 +1,15 @@
-# WhatsApp Demo [![Badge](https://img.shields.io/badge/built%20with-wedeploy-00d46a.svg?style=flat)](http://wedeploy.com)
+# WhatsApp [![Badge](https://img.shields.io/badge/built%20with-wedeploy-00d46a.svg?style=flat)](http://wedeploy.com)
 
-This project will demonstrate how to use the WeDeploy Data container in a real-world application.
+A demo of [WeDeploy Data](https://wedeploy.com/docs/data/) and [WeDeploy Hosting](https://wedeploy.com/docs/hosting/).
 
-> [Visit the documentation to learn how to start saving and fetching data in realtime.](http://wedeploy.com/docs/data/)
+## Instructions
 
-## Related
+1. Install the [WeDeploy CLI](https://wedeploy.com/docs/intro/using-the-command-line/).
+2. Go to the [WeDeploy Console](https://console.wedeploy.com) and create a new project.
+3. Clone this repository and open it in a text editor.
+4. Search for all occurrences of `whatsapp.wedeploy.io` and replace with `yourproject.wedeploy.io`.
+5. Open the project with your command line and run `we deploy -p yourproject`.
 
-* [Newsletter Demo](https://github.com/wedeploy/demo-newsletter)
-* [Spotify Demo](https://github.com/wedeploy/demo-spotify)
+## License
+
+[BSD-3-Clause](./LICENSE.md), © Liferay, Inc.
