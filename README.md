@@ -1,6 +1,6 @@
 # WhatsApp [![Badge](https://img.shields.io/badge/built%20with-wedeploy-00d46a.svg?style=flat)](http://wedeploy.com)
 
-A demo of [WeDeploy Data](https://wedeploy.com/docs/data/) and [WeDeploy Hosting](https://wedeploy.com/docs/hosting/).
+An example of [WeDeploy Data](https://wedeploy.com/docs/data/) and [WeDeploy Hosting](https://wedeploy.com/docs/hosting/).
 
 ## Instructions
 
