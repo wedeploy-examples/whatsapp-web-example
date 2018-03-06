@@ -1,6 +1,6 @@
 [
-	{
-		"path": "/messages/*",
-		"data": true
-	}
+  {
+    "path": "/messages/*",
+    "data": true
+  }
 ]
