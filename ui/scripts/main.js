@@ -33,20 +33,20 @@ WeDeploy.data(MESSAGES_ENDPOINT)
     }
   });
 
-  WeDeploy
-    .data(MESSAGES_ENDPOINT)
-    .orderBy('id', 'desc')
-    .limit(1)
-    .watch('messages')
-    .on('changes', function(result) {
-      var data = result.pop();
-      var element = document.getElementById(data.id);
-      if (element) {
-        animateMessage(element);
-      } else {
-        appendMessage(data);
-      }
-    });
+WeDeploy
+  .data(MESSAGES_ENDPOINT)
+  .orderBy('id', 'desc')
+  .limit(1)
+  .watch('messages')
+  .on('changes', function(result) {
+    var data = result.pop();
+    var element = document.getElementById(data.id);
+    if (element) {
+      animateMessage(element);
+    } else {
+      appendMessage(data);
+    }
+  });
 
 /* New Message */
 
